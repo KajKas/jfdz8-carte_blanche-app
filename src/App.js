@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 import './App.css';
-import EventsMap from "./EventsMap";
-import axios from 'axios'
+import MainMap from "./EventsMap";
+// import axios from 'axios'
 
 
-const proxyRequest = (url, options) => axios.get(
-  url,
-  {
-    proxy: {
-      host: 'http://planer.info.pl'
-    },
-    ...options
-});
+// const proxyRequest = (url, options) => axios.get(
+//   url,
+//   {
+//     proxy: {
+//       host: 'http://planer.info.pl'
+//     },
+//     ...options
+// });
 
 class App extends Component {
 
@@ -20,24 +20,24 @@ class App extends Component {
 
   }
 
-  componentDidMount() {
-    this.getEvents()
-  }
+  // componentDidMount() {
+  //   this.getEvents()
+  // }
 
-  getEvents() {
-    proxyRequest(
-      '/api/rest/events.json'
-    ).then(
-      data => this.setState({
-        events: data
-      })
-    )
-  }
+  // getEvents() {
+  //   proxyRequest(
+  //     '/api/rest/events.json'
+  //   ).then(
+  //     data => this.setState({
+  //       events: data
+  //     })
+  //   )
+  // }
 
 
   render() {
     return (
-      <EventsMap/>
+      <MainMap/>
     )
   }
 }
