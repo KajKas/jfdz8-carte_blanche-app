@@ -1,8 +1,17 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import EventsList from "./EventsList";
-import EventsMap from "./EventsMap";
+import axios from 'axios'
 
+
+const proxyRequest = (url, options) => axios.get(
+  url,
+  {
+    proxy: {
+      host: 'http://planer.info.pl'
+    },
+    ...options
+});
 
 class App extends Component {
 
@@ -16,15 +25,8 @@ class App extends Component {
   }
 
   getEvents() {
-    fetch(
-      '/api/rest/events.json',
-      {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-    ).then(
-      response => response.json()
+    proxyRequest(
+      '/api/rest/events.json'
     ).then(
       data => this.setState({
         events: data
@@ -35,14 +37,13 @@ class App extends Component {
 
   render() {
     return (
-        <Fragment>
-            <EventsMap/>
+
             <EventsList/>
-        </Fragment>
+
 
 
     );
   }
 }
 
-export default App;
+export default App
