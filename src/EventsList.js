@@ -4,9 +4,15 @@ class EventsList extends Component {
     render() {
         return (
             <ul>
-                <li>
-                    
-                </li>
+                {
+                    this.props.events.map(
+                        event => (
+                            <li key={event.id}>
+                                {event.name}
+                            </li>
+                        )
+                    )
+                }
             </ul>
         );
     }

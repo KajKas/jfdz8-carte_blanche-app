@@ -4,15 +4,6 @@ import EventsList from "./EventsList";
 import axios from 'axios'
 
 
-const proxyRequest = (url, options) => axios.get(
-  url,
-  {
-    proxy: {
-      host: 'http://planer.info.pl'
-    },
-    ...options
-});
-
 class App extends Component {
 
   state = {
@@ -25,9 +16,9 @@ class App extends Component {
   }
 
   getEvents() {
-    proxyRequest(
-      '/api/rest/events.json'
-    ).then(
+    fetch('/api/rest/events.json')
+        .then(response => response.json())
+        .then(
       data => this.setState({
         events: data
       })
@@ -37,11 +28,7 @@ class App extends Component {
 
   render() {
     return (
-
-            <EventsList/>
-
-
-
+            <EventsList events={this.state.events}/>
     );
   }
 }
