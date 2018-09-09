@@ -1,6 +1,14 @@
 import React, {Component} from 'react'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
+import L from 'leaflet';
 
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
 
 class EventsMap extends Component {
 
@@ -9,6 +17,7 @@ class EventsMap extends Component {
 
   render() {
     return (
+
       <div >
         <Map center={this.position} zoom={13}  style={{height: '400px', width:'400px'}}>
           <TileLayer
