@@ -1,38 +1,29 @@
 import React, {Component} from 'react';
 import './App.css';
 import MainMap from "./EventsMap";
-// import axios from 'axios'
 
-
-// const proxyRequest = (url, options) => axios.get(
-//   url,
-//   {
-//     proxy: {
-//       host: 'http://planer.info.pl'
-//     },
-//     ...options
-// });
 
 class App extends Component {
 
   state = {
     events: [],
-
   }
 
-  // componentDidMount() {
-  //   this.getEvents()
-  // }
+  componentDidMount() {
+    this.getEvents()
+  }
 
-  // getEvents() {
-  //   proxyRequest(
-  //     '/api/rest/events.json'
-  //   ).then(
-  //     data => this.setState({
-  //       events: data
-  //     })
-  //   )
-  // }
+  getEvents() {
+    fetch(
+      'https://isa-cors-proxy.herokuapp.com/api/rest/events.json'
+    )
+      .then(response => response.json())
+      .then(
+      data => this.setState({
+        events: data
+      })
+    )
+  }
 
 
   render() {
