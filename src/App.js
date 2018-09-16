@@ -32,22 +32,16 @@ class App extends Component {
       'https://isa-cors-proxy.herokuapp.com/api/rest/events.json'
     )
       .then(response => response.json())
-      .then(events => events.map(
-
+      .then(
+        events => events.map(
+          event => fetch('https://isa-cors-proxy.herokuapp.com/api/rest/places?id=' + event.id)
         )
       )
       .then(
-        data => data.map(
-          place => fetch('https://isa-cors-proxy.herokuapp.com/api/rest/places?id=' + place.id)
-        ).then(response => response.json())
-          .then(
-            places => this.setState({
-              places: places
-            })
-
-          )
+        places => this.setState({
+          places: places
+        })
       )
-
   }
 
 
