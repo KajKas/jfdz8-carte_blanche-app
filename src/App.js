@@ -6,23 +6,48 @@ import MainMap from "./EventsMap";
 class App extends Component {
 
   state = {
-    events: [],
+    // events: [],
+    places: []
   }
 
   componentDidMount() {
-    this.getEvents()
+    // this.getEvents()
+    this.getPlaces()
   }
 
-  getEvents() {
+  // getEvents() {
+  //   fetch(
+  //     'https://isa-cors-proxy.herokuapp.com/api/rest/events.json'
+  //   )
+  //     .then(response => response.json())
+  //     .then(
+  //     data => this.setState({
+  //       events: data
+  //     })
+  //   )
+  // }
+
+  getPlaces() {
     fetch(
       'https://isa-cors-proxy.herokuapp.com/api/rest/events.json'
     )
       .then(response => response.json())
+      .then(events => events.map(
+
+        )
+      )
       .then(
-      data => this.setState({
-        events: data
-      })
-    )
+        data => data.map(
+          place => fetch('https://isa-cors-proxy.herokuapp.com/api/rest/places?id=' + place.id)
+        ).then(response => response.json())
+          .then(
+            places => this.setState({
+              places: places
+            })
+
+          )
+      )
+
   }
 
 
