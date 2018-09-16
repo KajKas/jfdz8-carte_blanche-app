@@ -16,10 +16,14 @@ class EventsMap extends Component {
     position: [54.40, 18.57]
   }
 
+  componentDidUpdate() {
+    console.log([Number(this.props.events[0].place.address.lat), Number(this.props.events[0].place.address.lng)])
+  }
+
   render() {
     return (
 
-      <div >
+      <div>
         <Map center={this.state.position} zoom={13}  style={{height: '400px', width:'400px'}}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -28,9 +32,14 @@ class EventsMap extends Component {
           <Marker position={this.state.position}>
             <Popup>A pretty CSS3 popup.<br/>Easily customizable.</Popup>
           </Marker>
+
+          {/*<Marker position={this.props.pos}>*/}
+            {/*<Popup>A pretty CSS3 popup.<br/>Easily customizable.</Popup>*/}
+          {/*</Marker>*/}
+
         </Map>
       </div>
-    );
+    )
   }
 }
 
