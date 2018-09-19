@@ -13,21 +13,32 @@ L.Icon.Default.mergeOptions({
 class EventsMap extends Component {
 
   state = {
-    position: [54.40, 18.57]
+    position: [54.40, 18.57],
+    currentPosition: []
+  }
+
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        currentPosition: [position.coords.latitude, position.coords.longitude]
+      })
+    })
+    console.log(this.state.currentPosition)
   }
 
 
 
   render() {
     return (
-
       <div>
-        <Map center={this.state.position} zoom={13} style={{ height: '400px', width: '400px' }}>
+
+        {console.log(this.state.currentPosition)}
+
+        <Map center={this.state.position} zoom={13} style={{height: '400px', width: '400px'}}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
-
           {
             this.props.events.map(
               event => (
