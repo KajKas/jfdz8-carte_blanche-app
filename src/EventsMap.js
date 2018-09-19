@@ -26,18 +26,21 @@ class EventsMap extends Component {
     return (
 
       <div>
-        <Map center={this.state.position} zoom={13}  style={{height: '400px', width:'400px'}}>
+        <Map center={this.state.position} zoom={13} style={{ height: '400px', width: '400px' }}>
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           />
-          <Marker position={this.state.position}>
-            <Popup>A pretty CSS3 popup.<br/>Easily customizable.</Popup>
-          </Marker>
 
-          <Marker position={[Number(this.props.events[0].place.address.lat), Number(this.props.events[0].place.address.lng)]}>
-            <Popup>A pretty CSS3 popup.<br/>Easily customizable.</Popup>
-          </Marker>
+          {
+            this.props.events.map(
+              event => (
+                <Marker position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
+                  <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
+                </Marker>
+              )
+            )
+          }
 
         </Map>
       </div>
