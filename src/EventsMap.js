@@ -16,10 +16,6 @@ class EventsMap extends Component {
     position: [54.40, 18.57]
   }
 
-  componentDidUpdate() {
-    console.log([Number(this.props.events[0].place.address.lat), Number(this.props.events[0].place.address.lng)])
-  }
-
 
 
   render() {
@@ -35,8 +31,8 @@ class EventsMap extends Component {
           {
             this.props.events.map(
               event => (
-                <Marker position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
-                  <Popup>A pretty CSS3 popup.<br />Easily customizable.</Popup>
+                <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
+                  <Popup>{event.name}<br/>{event.descShort}</Popup>
                 </Marker>
               )
             )

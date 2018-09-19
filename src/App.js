@@ -38,10 +38,6 @@ class App extends Component {
     )
   }
 
-  componentDidUpdate() {
-    console.log([Number(this.state.events[0].place.address.lat), Number(this.state.events[0].place.address.lng)])
-  }
-
 
   render() {
     return (
