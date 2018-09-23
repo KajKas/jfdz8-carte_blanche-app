@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
 import EventsList from "./EventsList";
@@ -42,10 +43,44 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
-        <EventsMap events={this.state.events}/>
-        <EventsList events={this.state.events}/>
-      </Fragment>
+      <Router>
+        <div className="App">
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+
+            <li>
+              <Link to="/eventsMap" events={this.state.events}>Map of events</Link>
+            </li>
+
+            <li>
+              <Link to="/eventsList">List of events</Link>
+            </li>
+          </ul>
+
+          <Route exact path="/" render={() => 'Enter your preferences'}/>
+          <Route
+            path="/eventsMap"
+            render={() => (
+              <EventsMap
+                events={this.state.events}
+              />
+            )}
+          />
+          <Route
+            path="/eventsList"
+            render={() => (
+              <EventsList
+                events={this.state.events}
+              />
+            )}
+          />
+        </div>
+      </Router>
+
+
+
     )
   }
 }
