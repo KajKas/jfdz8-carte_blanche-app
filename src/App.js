@@ -1,6 +1,7 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './App.css';
 import EventsMap from "./EventsMap";
+import EventsList from "./EventsList";
 
 
 class App extends Component {
@@ -41,8 +42,10 @@ class App extends Component {
 
   render() {
     return (
-      <EventsMap events={this.state.events}/>
-
+      <Fragment>
+        <EventsMap events={this.state.events}/>
+        <EventsList events={this.state.events}/>
+      </Fragment>
     )
   }
 }
