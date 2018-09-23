@@ -33,21 +33,21 @@ class EventsMap extends Component {
 
         {
           this.state.currentPosition ?
-          <Map center={this.state.currentPosition} zoom={13} style={{height: '400px', width: '400px'}}>
-            <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-            />
-            {
-              this.props.events.map(
-                event => (
-                  <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
-                    <Popup>{event.name}<br/>{event.descShort}</Popup>
-                  </Marker>
+            <Map center={this.state.currentPosition} zoom={13} style={{height: '400px', width: '400px'}}>
+              <TileLayer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+              />
+              {
+                this.props.events.map(
+                  event => (
+                    <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
+                      <Popup>{event.name}<br/>{event.descShort}</Popup>
+                    </Marker>
+                  )
                 )
-              )
-            }
-          </Map> : null
+              }
+            </Map> : null
         }
 
 
