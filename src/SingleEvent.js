@@ -2,6 +2,21 @@ import React, {Component, Fragment} from 'react'
 
 class SingleEvent extends Component {
 
+  state = {
+    position: [],
+    lat: '',
+    lng: ''
+  }
+
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      })
+    })
+  }
+
   formatDate(stringDate) {
     const date = new Date(stringDate)
 
@@ -22,6 +37,10 @@ class SingleEvent extends Component {
     }
 
     return day + '-' + month + '-' + year + '  ' + hour + ':' + minutes
+  }
+
+  transport() {
+
   }
 
   render() {
@@ -47,6 +66,9 @@ class SingleEvent extends Component {
           </p>
           <p>Strona wydarzenia: <a href={this.props.event.urls.www}>{this.props.event.urls.www}</a></p>
           <div dangerouslySetInnerHTML={{__html: this.props.event.descLong}} />
+          <a href={'https://jakdojade.pl/trojmiasto/trasa/?tc=' + this.props.event.place.address.lat + ':' + this.props.event.place.address.lng + '&fc=' + this.state.lat + ':' + this.state.lng}>
+            Jak dojadę?
+          </a>
         </Fragment>
     )
   }
