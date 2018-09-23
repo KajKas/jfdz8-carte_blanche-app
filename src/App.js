@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
 import EventsList from "./EventsList";
+import SingleEvent from "./SingleEvent";
 
 
 class App extends Component {
@@ -76,11 +77,15 @@ class App extends Component {
               />
             )}
           />
+          <Route
+          path="/events/:eventId"
+          render={
+            (props) => (
+              <SingleEvent event={this.state.events.find(event => event.id === parseInt(props.match.params.eventId))}/>
+            )
+          }/>
         </div>
       </Router>
-
-
-
     )
   }
 }
