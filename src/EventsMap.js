@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import L from 'leaflet';
+import {Link} from "react-router-dom";
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -13,8 +14,7 @@ L.Icon.Default.mergeOptions({
 class EventsMap extends Component {
 
   state = {
-    position: [54.40, 18.57],
-    // currentPosition: []
+    position: []
   }
 
   componentWillMount() {
@@ -25,12 +25,9 @@ class EventsMap extends Component {
     })
   }
 
-
-
   render() {
     return (
       <div>
-
         {
           this.state.currentPosition ?
             <Map center={this.state.currentPosition} zoom={13} style={{height: '400px', width: '400px'}}>
@@ -42,15 +39,13 @@ class EventsMap extends Component {
                 this.props.events.map(
                   event => (
                     <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
-                      <Popup>{event.name}<br/>{event.descShort}</Popup>
+                      <Popup><Link to={'/events/' + event.id}> {event.name}</Link><br/>{event.descShort}</Popup>
                     </Marker>
                   )
                 )
               }
             </Map> : null
         }
-
-
       </div>
     )
   }

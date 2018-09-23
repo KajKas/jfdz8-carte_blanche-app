@@ -4,6 +4,7 @@ import './App.css';
 import EventsMap from "./EventsMap";
 import EventsList from "./EventsList";
 import SignUpForm from "./SignUpForm"
+import SingleEvent from "./SingleEvent";
 
 
 class App extends Component {
@@ -40,7 +41,6 @@ class App extends Component {
       eventsWithPlaces => this.setState({ events: eventsWithPlaces })
     )
   }
-
 
   render() {
     return (
@@ -81,11 +81,15 @@ class App extends Component {
               />
             )}
           />
+          <Route
+          path="/events/:eventId"
+          render={
+            (props) => (
+              <SingleEvent event={this.state.events.find(event => event.id === parseInt(props.match.params.eventId))}/>
+            )
+          }/>
         </div>
       </Router>
-
-
-
     )
   }
 }
