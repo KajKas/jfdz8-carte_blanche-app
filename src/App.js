@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
 import EventsList from "./EventsList";
+import SignUpForm from "./SignUpForm"
 
 
 class App extends Component {
@@ -46,6 +47,10 @@ class App extends Component {
       <Router>
         <div className="App">
           <ul>
+            <li>
+                <SignUpForm/>
+            </li>
+
             <li>
               <Link to="/">Home</Link>
             </li>
