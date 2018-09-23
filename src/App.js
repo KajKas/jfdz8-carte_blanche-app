@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
 import './App.css';
-import EventsList from "./EventsList";
-/*import axios from 'axios'*/
+import EventsMap from "./EventsMap";
 
 
 class App extends Component {
 
   state = {
     events: [],
-
   }
 
   componentDidMount() {
@@ -16,20 +14,36 @@ class App extends Component {
   }
 
   getEvents() {
-    fetch('/api/rest/events.json')
-        .then(response => response.json())
-        .then(
-      data => this.setState({
-        events: data
-      })
+    let eventsPromise = fetch('https://isa-cors-proxy.herokuapp.com/api/rest/events.json').then(response => { return response.json() });
+    let placesPromise = fetch('https://isa-cors-proxy.herokuapp.com/api/rest/places.json').then(response => { return response.json() });
+
+    placesPromise.then(
+      places => places.reduce(
+        (result, next) => {
+          result[next.id] = next
+          return result
+        }, {}
+      )
+    ).then(
+      placesObject => eventsPromise.then(
+        events => events.map(
+          event => ({
+            ...event,
+            place: placesObject[event.place.id]
+          })
+        )
+      )
+    ).then(
+      eventsWithPlaces => this.setState({ events: eventsWithPlaces })
     )
   }
 
 
   render() {
     return (
-            <EventsList events={this.state.events}/>
-    );
+      <EventsMap events={this.state.events}/>
+
+    )
   }
 }
 

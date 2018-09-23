@@ -1,24 +1,58 @@
 import React, {Component} from 'react'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
+import L from 'leaflet';
 
+delete L.Icon.Default.prototype._getIconUrl;
+
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
 
 class EventsMap extends Component {
 
-  position = [51.505, -0.09];
+  state = {
+    position: [54.40, 18.57],
+    // currentPosition: []
+  }
+
+  componentWillMount() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.setState({
+        currentPosition: [position.coords.latitude, position.coords.longitude]
+      })
+    })
+  }
+
 
 
   render() {
     return (
-        <Map center={this.position} zoom={13}>
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
-          />
-          <Marker position={this.position}>
-            <Popup>A pretty CSS3 popup.<br/>Easily customizable.</Popup>
-          </Marker>
-        </Map>
-    );
+      <div>
+
+        {
+          this.state.currentPosition ?
+          <Map center={this.state.currentPosition} zoom={13} style={{height: '400px', width: '400px'}}>
+            <TileLayer
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
+            />
+            {
+              this.props.events.map(
+                event => (
+                  <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
+                    <Popup>{event.name}<br/>{event.descShort}</Popup>
+                  </Marker>
+                )
+              )
+            }
+          </Map> : null
+        }
+
+
+      </div>
+    )
   }
 }
 
