@@ -3,11 +3,16 @@ import React, {Component, Fragment} from 'react'
 class PreferencesForm extends Component {
 
   state = {
-    categories: []
+    categories: [],
+    activeCategories: []
   }
 
   componentDidMount() {
     this.getCategories()
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    prevState.activeCategories !== this.state.activeCategories && this.props.setActiveCategories(this.state.activeCategories)
   }
 
   getCategories() {
@@ -22,7 +27,11 @@ class PreferencesForm extends Component {
       )
   }
 
-
+  handleSelect = (e) => {
+    this.setState({
+      activeCategories: this.state.activeCategories.concat([e.target.value])
+    })
+  }
 
   render() {
     return (
@@ -30,11 +39,11 @@ class PreferencesForm extends Component {
         <form>
           <div>
             <label><input type="checkbox"/>Kino</label>
-            <select name="prferences">
+            <select name="prferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 99).filter(categories => categories.id < 200).map(
                   category => (
-                    <option value="text">{category.name}</option>
+                    <option value={category.id}>{category.name}</option>
                   )
                 )
               }

@@ -12,10 +12,19 @@ class App extends Component {
 
   state = {
     events: [],
+    activeCategories: [],
   }
 
   componentDidMount() {
     this.getEvents()
+  }
+
+  setActiveCategories = (categories) => this.setState({ activeCategories: categories })
+
+  filterEvents = () => {
+    // filtrowanie
+    return this.state.events
+
   }
 
   getEvents() {
@@ -65,12 +74,19 @@ class App extends Component {
             </li>
           </ul>
 
-          <Route path="/preferencesForm" component={PreferencesForm}/>
+          <Route
+            path="/preferencesForm"
+            render={(props) => (
+              <PreferencesForm
+                setActiveCategories={this.setActiveCategories}
+              />
+            )}
+          />
           <Route
             path="/eventsMap"
             render={() => (
               <EventsMap
-                events={this.state.events}
+                events={this.filterEvents()}
               />
             )}
           />
@@ -78,7 +94,7 @@ class App extends Component {
             path="/eventsList"
             render={() => (
               <EventsList
-                events={this.state.events}
+                events={this.filterEvents()}
               />
             )}
           />
