@@ -1,10 +1,11 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
 import EventsList from "./EventsList";
 import SignUpForm from "./SignUpForm"
 import SingleEvent from "./SingleEvent";
+import PreferencesForm from "./PreferencesForm";
 
 
 class App extends Component {
@@ -52,19 +53,19 @@ class App extends Component {
             </li>
 
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/preferencesForm">Preferencje</Link>
             </li>
 
             <li>
-              <Link to="/eventsMap" events={this.state.events}>Map of events</Link>
+              <Link to="/eventsMap">Mapa wydarzeń</Link>
             </li>
 
             <li>
-              <Link to="/eventsList">List of events</Link>
+              <Link to="/eventsList">Lista wydarzeń</Link>
             </li>
           </ul>
 
-          <Route exact path="/" render={() => 'Enter your preferences'}/>
+          <Route path="/preferencesForm" component={PreferencesForm}/>
           <Route
             path="/eventsMap"
             render={() => (
