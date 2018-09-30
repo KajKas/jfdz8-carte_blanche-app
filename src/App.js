@@ -5,16 +5,46 @@ import EventsMap from "./EventsMap";
 import EventsList from "./EventsList";
 import SignUpForm from "./SignUpForm"
 import SingleEvent from "./SingleEvent";
+import PreferencesForm from "./PreferencesForm";
+import firebase from "firebase";
 
 
 class App extends Component {
 
   state = {
     events: [],
+      email: '',
+      password: '',
+      user: null,
   }
 
+
+    handleSubmit = event => {
+        event.preventDefault()
+        firebase.auth().createUserWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        )
+    }
+
+    logIn = event => {
+        event.preventDefault()
+        firebase.auth().signInWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        )
+    }
+
+    signOut = (event) => {
+        event.preventDefault()
+        firebase.auth().signOut()
+    }
+
   componentDidMount() {
-    this.getEvents()
+      this.getEvents()
+      firebase.auth().onAuthStateChanged(
+          user => this.setState({ user })
+      )
   }
 
   getEvents() {
@@ -45,26 +75,29 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
-          <ul>
-            <li>
-                <SignUpForm/>
-            </li>
+          <Fragment>
+          <div className="hero">
+            <div className="App">
+              <ul className="Topbar">
+                  <li>
+                      <button onClick={this.signOut}>LOG OUT</button>
+                  </li>
 
-            <li>
-              <Link to="/">Home</Link>
-            </li>
 
-            <li>
-              <Link to="/eventsMap" events={this.state.events}>Map of events</Link>
-            </li>
+                <li>
+                  <Link className="topbar-button" to="/preferencesForm">Preferencje</Link>
+                </li>
 
-            <li>
-              <Link to="/eventsList">List of events</Link>
-            </li>
-          </ul>
+                <li>
+                  <Link className="topbar-button" to="/eventsMap">Mapa wydarzeń</Link>
+                </li>
 
-          <Route exact path="/" render={() => 'Enter your preferences'}/>
+                <li>
+                  <Link className="topbar-button" to="/eventsList">Lista wydarzeń</Link>
+                </li>
+              </ul>
+
+          <Route path="/preferencesForm" component={PreferencesForm}/>
           <Route
             path="/eventsMap"
             render={() => (
@@ -89,6 +122,16 @@ class App extends Component {
             )
           }/>
         </div>
+              <div className="sign-up-form">
+                  <SignUpForm
+                      handleSubmit={this.handleSubmit}
+                      logIn={this.logIn}
+                      user={this.state.user}
+                  />
+              </div>
+        </div>
+
+          </Fragment>
       </Router>
     )
   }

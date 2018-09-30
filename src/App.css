@@ -1,28 +1,63 @@
-.App {
+.hero {
   text-align: center;
+  height: 100vh;
+  position: relative;
+  background-attachment: fixed;
+
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
+.hero::after {
+  content: "";
+  background: url("../src/images/hero_background.jpg");
+  background-size: cover;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.App {
+  float: right;
+}
+
+.Topbar {
+  list-style: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1c7aa7;
   height: 80px;
+  z-index: 1;
+  border-bottom: 1px solid #ffffff;
+  float: right;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.topbar-button {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  float: right;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 10px;
+  margin: 0 2px;
 }
 
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.sign-up-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+    width: 450px;
+    font-size: 16px;
+    background: #495C70;
+    padding: 30px 30px 15px 30px;
+    border: 5px solid #53687E;
 }
