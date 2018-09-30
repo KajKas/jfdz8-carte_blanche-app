@@ -44,6 +44,7 @@ class App extends Component {
   }
 
   render() {
+      let navHeader = this.state.isAuth ? <SignUpForm /> : '';
     return (
       <Router>
           <Fragment>

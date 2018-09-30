@@ -23,13 +23,22 @@ class SignUpForm extends Component {
         )
     }
 
+    signOut = (event) => {
+        event.preventDefault()
+        firebase.auth().signOut()
+    }
+
     render() {
         return (
             this.state.user ?
-                <p>Hello {this.state.user.email}</p> :
+                <div>
+                    <p>Hello {this.state.user.email}</p>
+                    <button onClick={this.signOut}>Log Out</button>
+                </div>
+                 :
                 <form onSubmit={this.handleSubmit}>
                     <label
-                        for="e-mail"
+                        htmlFor="e-mail"
                         className="form-label"
                     >
                         <span>E-mail</span>
@@ -45,7 +54,7 @@ class SignUpForm extends Component {
                     />
                     </label>
                     <label
-                        for="password"
+                        htmlFor="password"
                         className="form-label"
                     >
                         <span>Hasło</span>
