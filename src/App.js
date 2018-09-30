@@ -44,14 +44,16 @@ class App extends Component {
     )
   }
 
-  setActiveCategories = (categories) => this.setState({ activeCategories: categories })
+  enableCategory = (categoryId) => {
+    this.setState({ activeCategories: this.state.activeCategories.concat(categoryId) })
+  }
   filterEvents = () => {
     return this.state.events
   }
 
   deleteActiveCategory = (activeCategoryId) => {
     this.setState({
-      activeCategories: this.state.activeCategories.filter((actCat => actCat !== activeCategoryId))
+      activeCategories: this.state.activeCategories.filter((actCat => actCat !== ('' + activeCategoryId)))
     })
   }
 
@@ -81,7 +83,8 @@ class App extends Component {
             path="/preferencesForm"
             render={(props) => (
               <PreferencesForm
-                setActiveCategories={this.setActiveCategories}
+                activeCategories={this.state.activeCategories}
+                enableCategory={this.enableCategory}
                 deleteActiveCategory={this.deleteActiveCategory}
               />
             )}

@@ -4,7 +4,6 @@ class PreferencesForm extends Component {
 
   state = {
     categories: [],
-    activeCategories: [],
     rangeFrom: 0,
     rangeTo: 0
   }
@@ -25,14 +24,8 @@ class PreferencesForm extends Component {
       )
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    prevState.activeCategories !== this.state.activeCategories && this.props.setActiveCategories(this.state.activeCategories)
-  }
-
   handleSelect = (e) => {
-    this.setState({
-      activeCategories: this.state.activeCategories.concat([e.target.value])
-    })
+    this.props.enableCategory(e.target.value)
   }
 
   handleRangeFrom(event) {
@@ -191,7 +184,7 @@ class PreferencesForm extends Component {
         <div>
           <h3>Wybrane kategorie:</h3>
         {
-          this.state.activeCategories.map(
+          this.props.activeCategories.map(
             activeCategory =>
               <button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>
                 {this.state.categories.filter(categoryTag => categoryTag.id === parseInt(activeCategory))[0].name}
