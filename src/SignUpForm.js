@@ -3,12 +3,6 @@ import firebase from 'firebase'
 import './SignUpForm.css'
 
 class SignUpForm extends Component {
-    state = {
-        email: '',
-        password: '',
-        user: null
-    }
-
     componentDidMount() {
         firebase.auth().onAuthStateChanged(
             user => this.setState({ user })
@@ -18,16 +12,16 @@ class SignUpForm extends Component {
     handleSubmit = event => {
         event.preventDefault()
         firebase.auth().createUserWithEmailAndPassword(
-            this.state.email,
-            this.state.password
+            this.props.email,
+            this.props.password
         )
     }
 
     logIn = event => {
         event.preventDefault()
         firebase.auth().signInWithEmailAndPassword(
-            this.state.email,
-            this.state.password
+            this.props.email,
+            this.props.password
         )
     }
 
@@ -38,44 +32,40 @@ class SignUpForm extends Component {
 
     render() {
         return (
-            this.state.user ?
-                <div>
-                    <p>Hello {this.state.user.email}</p>
-                    <button onClick={this.signOut}>Log Out</button>
-                </div>
-                 :
+            <div className={`sign-up-form ${this.props.user && 'sign-up-form--hidden'}`}>
+                {!this.props.user &&
                 <form onSubmit={this.handleSubmit}>
                     <label
                         htmlFor="e-mail"
                         className="form-label"
                     >
                         <span>E-mail</span>
-                    <input
-                        className="form-input"
-                        name="e-mail"
-                        type="text"
-                        placeholder="e-mail"
-                        value={this.state.email}
-                        onChange={event => this.setState({
-                            email: event.target.value
-                        })}
-                    />
+                        <input
+                            className="form-input"
+                            name="e-mail"
+                            type="text"
+                            placeholder="e-mail"
+                            value={this.props.email}
+                            onChange={event => this.setState({
+                                email: event.target.value
+                            })}
+                        />
                     </label>
                     <label
                         htmlFor="password"
                         className="form-label"
                     >
                         <span>Hasło</span>
-                    <input
-                        className="form-input"
-                        name="password"
-                        type="password"
-                        placeholder="hasło"
-                        value={this.state.password}
-                        onChange={event => this.setState({
-                            password: event.target.value
-                        })}
-                    />
+                        <input
+                            className="form-input"
+                            name="password"
+                            type="password"
+                            placeholder="hasło"
+                            value={this.props.password}
+                            onChange={event => this.setState({
+                                password: event.target.value
+                            })}
+                        />
                     </label>
                     <button
                         onClick={this.handleSubmit}
@@ -89,7 +79,9 @@ class SignUpForm extends Component {
                     >
                         Zaloguj się
                     </button>
-                </form>
+                </form>}
+            </div>
+
         )
     }
 }
