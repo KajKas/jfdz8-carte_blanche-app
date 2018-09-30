@@ -3,7 +3,9 @@ import React, {Component, Fragment} from 'react'
 class PreferencesForm extends Component {
 
   state = {
-    categories: []
+    categories: [],
+    rangeFrom: 0,
+    rangeTo: 0
   }
 
   componentDidMount() {
@@ -22,6 +24,18 @@ class PreferencesForm extends Component {
       )
   }
 
+  handleRangeFrom(event) {
+    this.setState({
+      rangeFrom: event.target.value
+    })
+  }
+
+  handleRangeTo(event) {
+    this.setState({
+      rangeTo: event.target.value
+    })
+  }
+
 
 
   render() {
@@ -29,8 +43,24 @@ class PreferencesForm extends Component {
       <Fragment>
         <form>
           <div>
-            <label><input type="checkbox"/>Kino</label>
+            <label>Wiek</label>
             <select name="prferences">
+              <option value="text">{'<'}18</option>
+              <option value="text">{'18<21'}</option>
+              <option value="text">{'>21'}</option>
+            </select>
+          </div>
+          <div>
+            <label>Miasto</label>
+            <select name="preferences">
+              <option value="text">Gdańsk</option>
+              <option value="text">Sopot</option>
+              <option value="text">Gdynia</option>
+            </select>
+          </div>
+          <div>
+            <label>Kino</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 99).filter(categories => categories.id < 200).map(
                   category => (
@@ -41,8 +71,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Teatr</label>
-            <select name="prferences">
+            <label>Teatr</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 199).filter(categories => categories.id < 300).map(
                   category => (
@@ -53,8 +83,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Muzyka</label>
-            <select name="prferences">
+            <label>Muzyka</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 299).filter(categories => categories.id < 400).map(
                   category => (
@@ -65,8 +95,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Sztuka</label>
-            <select name="prferences">
+            <label>Sztuka</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 399).filter(categories => categories.id < 500).map(
                   category => (
@@ -77,8 +107,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Literatura</label>
-            <select name="prferences">
+            <label>Literatura</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 499).filter(categories => categories.id < 600).map(
                   category => (
@@ -89,8 +119,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Rozrywka</label>
-            <select name="prferences">
+            <label>Rozrywka</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 599).filter(categories => categories.id < 700).map(
                   category => (
@@ -101,8 +131,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Rekreacja</label>
-            <select name="prferences">
+            <label>Rekreacja</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 699).filter(categories => categories.id < 800).map(
                   category => (
@@ -113,8 +143,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Nauka</label>
-            <select name="prferences">
+            <label>Nauka</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 899).filter(categories => categories.id < 1000).map(
                   category => (
@@ -125,8 +155,8 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label><input type="checkbox"/>Inne</label>
-            <select name="prferences">
+            <label>Inne</label>
+            <select name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 999).filter(categories => categories.id < 1100).map(
                   category => (
@@ -135,6 +165,16 @@ class PreferencesForm extends Component {
                 )
               }
             </select>
+          </div>
+          <div>
+            <label>Cena od:</label>
+            <input type="range" min="0" max="1000" onChange={(event) => this.handleRangeFrom(event)}/>
+            <span>{this.state.rangeFrom}</span>
+          </div>
+          <div>
+            <label>Cena do:</label>
+            <input type="range" min={this.state.rangeFrom} max="1000" onChange={(event) => this.handleRangeTo(event)}/>
+            <span>{this.state.rangeTo}</span>
           </div>
         </form>
       </Fragment>
