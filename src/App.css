@@ -1,12 +1,12 @@
-.App {
+.hero {
   text-align: center;
   height: 100vh;
   position: relative;
   background-attachment: fixed;
-  padding-top: 60px;
+
 }
 
-.App::after {
+.hero::after {
   content: "";
   background: url("../src/images/hero_background.jpg");
   background-size: cover;
@@ -19,6 +19,40 @@
   z-index: -1;
 }
 
-.App li {
+.App {
+  float: right;
+}
+
+.Topbar {
   list-style: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #1c7aa7;
+  height: 80px;
+  z-index: 1;
+  border-bottom: 1px solid #ffffff;
+  float: right;
+}
+
+.topbar-button {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: bold;
+  float: right;
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  height: 60px;
+  line-height: 60px;
+  padding: 0 10px;
+  margin: 0 2px;
+}
+
+.sign-up-form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

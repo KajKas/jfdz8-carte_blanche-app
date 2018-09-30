@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
@@ -46,22 +46,22 @@ class App extends Component {
   render() {
     return (
       <Router>
+          <Fragment>
+          <div className="hero">
         <div className="App">
-          <ul>
+          <ul className="Topbar">
+
+
             <li>
-                <SignUpForm/>
+              <Link className="topbar-button" to="/preferencesForm">Preferencje</Link>
             </li>
 
             <li>
-              <Link to="/preferencesForm">Preferencje</Link>
+              <Link className="topbar-button" to="/eventsMap">Mapa wydarzeń</Link>
             </li>
 
             <li>
-              <Link to="/eventsMap">Mapa wydarzeń</Link>
-            </li>
-
-            <li>
-              <Link to="/eventsList">Lista wydarzeń</Link>
+              <Link className="topbar-button" to="/eventsList">Lista wydarzeń</Link>
             </li>
           </ul>
 
@@ -90,6 +90,12 @@ class App extends Component {
             )
           }/>
         </div>
+              <div className="sign-up-form">
+                  <SignUpForm/>
+              </div>
+        </div>
+
+          </Fragment>
       </Router>
     )
   }
