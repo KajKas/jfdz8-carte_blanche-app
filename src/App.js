@@ -94,6 +94,7 @@ class App extends Component {
             render={() => (
               <EventsMap
                 events={this.filterEvents()}
+                activeCategories={this.state.activeCategories}
               />
             )}
           />
@@ -102,6 +103,7 @@ class App extends Component {
             render={() => (
               <EventsList
                 events={this.filterEvents()}
+                activeCategories={this.state.activeCategories}
               />
             )}
           />
