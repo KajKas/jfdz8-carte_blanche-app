@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
+import './SignUpForm.css'
 
 class SignUpForm extends Component {
     state = {
@@ -27,7 +28,14 @@ class SignUpForm extends Component {
             this.state.user ?
                 <p>Hello {this.state.user.email}</p> :
                 <form onSubmit={this.handleSubmit}>
+                    <label
+                        for="e-mail"
+                        className="form-label"
+                    >
+                        <span>E-mail</span>
                     <input
+                        className="form-input"
+                        name="e-mail"
                         type="text"
                         placeholder="e-mail"
                         value={this.state.email}
@@ -35,7 +43,15 @@ class SignUpForm extends Component {
                             email: event.target.value
                         })}
                     />
+                    </label>
+                    <label
+                        for="password"
+                        className="form-label"
+                    >
+                        <span>Hasło</span>
                     <input
+                        className="form-input"
+                        name="password"
                         type="password"
                         placeholder="hasło"
                         value={this.state.password}
@@ -43,7 +59,12 @@ class SignUpForm extends Component {
                             password: event.target.value
                         })}
                     />
-                    <button>Zapisz</button>
+                    </label>
+                    <button
+                        className="form-button"
+                    >
+                        Zaloguj się
+                    </button>
                 </form>
         )
     }
