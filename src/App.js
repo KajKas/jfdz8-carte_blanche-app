@@ -50,7 +50,6 @@ class App extends Component {
   }
 
   deleteActiveCategory = (activeCategoryId) => {
-    debugger
     this.setState({
       activeCategories: this.state.activeCategories.filter((actCat => actCat !== activeCategoryId))
     })
