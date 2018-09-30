@@ -37,13 +37,13 @@ class SignUpForm extends Component {
                     />
                     <input
                         type="password"
-                        placeholder="password"
+                        placeholder="hasło"
                         value={this.state.password}
                         onChange={event => this.setState({
                             password: event.target.value
                         })}
                     />
-                    <button>Sign up</button>
+                    <button>Zapisz</button>
                 </form>
         )
     }
