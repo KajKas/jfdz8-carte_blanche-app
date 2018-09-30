@@ -23,6 +23,14 @@ class SignUpForm extends Component {
         )
     }
 
+    logIn = event => {
+        event.preventDefault()
+        firebase.auth().signInWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        )
+    }
+
     signOut = (event) => {
         event.preventDefault()
         firebase.auth().signOut()
@@ -70,6 +78,13 @@ class SignUpForm extends Component {
                     />
                     </label>
                     <button
+                        onClick={this.handleSubmit}
+                        className="form-button"
+                    >
+                        Stworz konto
+                    </button>
+                    <button
+                        onClick={this.logIn}
                         className="form-button"
                     >
                         Zaloguj się
