@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
@@ -6,16 +6,42 @@ import EventsList from "./EventsList";
 import SignUpForm from "./SignUpForm"
 import SingleEvent from "./SingleEvent";
 import PreferencesForm from "./PreferencesForm";
-
+import firebase from 'firebase';
 
 class App extends Component {
+    state = {
+        events: [],
+        email: '',
+        password: '',
+        user: null,
+    }
 
-  state = {
-    events: [],
-  }
+    handleSubmit = event => {
+        event.preventDefault()
+        firebase.auth().createUserWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        )
+    }
+
+    logIn = event => {
+        event.preventDefault()
+        firebase.auth().signInWithEmailAndPassword(
+            this.state.email,
+            this.state.password
+        )
+    }
+
+    signOut = (event) => {
+        event.preventDefault()
+        firebase.auth().signOut()
+    }
 
   componentDidMount() {
-    this.getEvents()
+      this.getEvents()
+      firebase.auth().onAuthStateChanged(
+          user => this.setState({ user })
+      )
   }
 
   getEvents() {
@@ -44,54 +70,64 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Router>
-        <div className="App">
-          <ul>
-            <li>
-                <SignUpForm/>
-            </li>
-
-            <li>
-              <Link to="/preferencesForm">Preferencje</Link>
-            </li>
-
-            <li>
-              <Link to="/eventsMap">Mapa wydarzeń</Link>
-            </li>
-
-            <li>
-              <Link to="/eventsList">Lista wydarzeń</Link>
-            </li>
-          </ul>
-
-          <Route path="/preferencesForm" component={PreferencesForm}/>
-          <Route
-            path="/eventsMap"
-            render={() => (
-              <EventsMap
-                events={this.state.events}
-              />
-            )}
-          />
-          <Route
-            path="/eventsList"
-            render={() => (
-              <EventsList
-                events={this.state.events}
-              />
-            )}
-          />
-          <Route
-          path="/events/:eventId"
-          render={
-            (props) => (
-              <SingleEvent event={this.state.events.find(event => event.id === parseInt(props.match.params.eventId))}/>
-            )
-          }/>
+    return <Router>
+      <Fragment>
+        <div className="hero">
+          <div className="topbar">
+            <div className="topbar-menu">
+              <div>
+                <Link className="topbar-button topbar-button-1" to="/preferencesForm">Twój wybór</Link>
+              </div>
+              <div>
+                <Link className="topbar-button topbar-button-2" to="/eventsMap">Mapa wydarzeń</Link>
+              </div>
+              <div>
+                <Link className="topbar-button topbar-button-3" to="/eventsList">Lista wydarzeń</Link>
+              </div>
+            </div>
+            <div>
+              <button
+                onClick={this.signOut}
+                className="form-button logout-button"
+              >Wyloguj się
+              </button>
+            </div>
+          </div>
+            <Route path="/preferencesForm" component={PreferencesForm}/>
+            <Route
+              path="/eventsMap"
+              render={() => (
+                <EventsMap
+                  events={this.state.events}
+                />
+              )}
+            />
+            <Route
+              path="/eventsList"
+              render={() => (
+                <EventsList
+                  events={this.state.events}
+                />
+              )}
+            />
+            <Route
+              path="/events/:eventId"
+              render={
+                (props) => (
+                  <SingleEvent
+                    event={this.state.events.find(event => event.id === parseInt(props.match.params.eventId))}/>
+                )
+              }/>
+          <div className="sign-up-form">
+            <SignUpForm
+              handleSubmit={this.handleSubmit}
+              logIn={this.logIn}
+              user={this.state.user}
+            />
+          </div>
         </div>
-      </Router>
-    )
+      </Fragment>
+    </Router>
   }
 }
 
