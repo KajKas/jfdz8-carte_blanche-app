@@ -3,7 +3,7 @@ import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import L from 'leaflet';
 import {Link} from "react-router-dom";
 
-import './EventMap.css'
+/*import './EventMap.css'*/
 
 delete L.Icon.Default.prototype._getIconUrl;
 

@@ -3,12 +3,11 @@
   height: 100vh;
   position: relative;
   background-attachment: fixed;
-
 }
 
 .hero::after {
   content: "";
-  background: url("../src/images/hero_background.jpg");
+  background: url("../src/images/background__app.jpg");
   background-size: cover;
   opacity: 0.8;
   top: 0;
