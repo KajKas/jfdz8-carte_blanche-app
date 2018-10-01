@@ -51,7 +51,7 @@ class SingleEvent extends Component {
         <Fragment>
           <h1>{this.props.event.name}</h1>
           {
-            this.props.event.attachments.map(image => (<img src={image.fileName}/>))
+            this.props.event.attachments.map(image => (<img src={image.fileName} alt="event"/>))
           }
           <p>Rozpoczęcie: {this.formatDate(this.props.event.startDate)}</p>
           <p>Zakończenie: {this.formatDate(this.props.event.endDate)}</p>

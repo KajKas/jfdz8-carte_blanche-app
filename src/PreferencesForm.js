@@ -41,7 +41,6 @@ class PreferencesForm extends Component {
   }
 
 
-
   render() {
     return (
       <Fragment>

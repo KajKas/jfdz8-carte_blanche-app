@@ -57,13 +57,18 @@ class App extends Component {
     })
   }
 
+
+  componentDidUpdate() {
+    localStorage.setItem('activeCategories', JSON.stringify(this.state.activeCategories))
+  }
+
   render() {
     return (
       <Router>
         <div className="App">
+          <SignUpForm/>
           <ul>
             <li>
-                <SignUpForm/>
             </li>
 
             <li>
