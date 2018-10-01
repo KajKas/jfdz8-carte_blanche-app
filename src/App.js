@@ -6,8 +6,7 @@ import EventsList from "./EventsList";
 import SignUpForm from "./SignUpForm"
 import SingleEvent from "./SingleEvent";
 import PreferencesForm from "./PreferencesForm";
-import firebase from "firebase";
-
+import firebase from 'firebase';
 
 class App extends Component {
     state = {
@@ -16,7 +15,6 @@ class App extends Component {
         password: '',
         user: null,
     }
-
 
     handleSubmit = event => {
         event.preventDefault()
@@ -72,67 +70,64 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <Router>
-          <Fragment>
-          <div className="hero">
-            <div className="App">
-              <ul className="Topbar">
-                <li>
-                  <Link className="topbar-button" to="/preferencesForm">Preferencje</Link>
-                </li>
-
-                <li>
-                  <Link className="topbar-button" to="/eventsMap">Mapa wydarzeń</Link>
-                </li>
-
-                <li>
-                  <Link className="topbar-button" to="/eventsList">Lista wydarzeń</Link>
-                </li>
-                <li>
-                  <button
-                    onClick={this.signOut}
-                    className="form-button logout-button"
-                  >Wyloguj się</button>
-                </li>
-              </ul>
-          <Route path="/preferencesForm" component={PreferencesForm}/>
-          <Route
-            path="/eventsMap"
-            render={() => (
-              <EventsMap
-                events={this.state.events}
-              />
-            )}
-          />
-          <Route
-            path="/eventsList"
-            render={() => (
-              <EventsList
-                events={this.state.events}
-              />
-            )}
-          />
-          <Route
-          path="/events/:eventId"
-          render={
-            (props) => (
-              <SingleEvent event={this.state.events.find(event => event.id === parseInt(props.match.params.eventId))}/>
-            )
-          }/>
-        </div>
-              <div className="sign-up-form">
-                  <SignUpForm
-                      handleSubmit={this.handleSubmit}
-                      logIn={this.logIn}
-                      user={this.state.user}
-                  />
+    return <Router>
+      <Fragment>
+        <div className="hero">
+          <div className="topbar">
+            <div className="topbar-menu">
+              <div>
+                <Link className="topbar-button topbar-button-1" to="/preferencesForm">Twój wybór</Link>
               </div>
+              <div>
+                <Link className="topbar-button topbar-button-2" to="/eventsMap">Mapa wydarzeń</Link>
+              </div>
+              <div>
+                <Link className="topbar-button topbar-button-3" to="/eventsList">Lista wydarzeń</Link>
+              </div>
+            </div>
+            <div>
+              <button
+                onClick={this.signOut}
+                className="form-button logout-button"
+              >Wyloguj się
+              </button>
+            </div>
+          </div>
+            <Route path="/preferencesForm" component={PreferencesForm}/>
+            <Route
+              path="/eventsMap"
+              render={() => (
+                <EventsMap
+                  events={this.state.events}
+                />
+              )}
+            />
+            <Route
+              path="/eventsList"
+              render={() => (
+                <EventsList
+                  events={this.state.events}
+                />
+              )}
+            />
+            <Route
+              path="/events/:eventId"
+              render={
+                (props) => (
+                  <SingleEvent
+                    event={this.state.events.find(event => event.id === parseInt(props.match.params.eventId))}/>
+                )
+              }/>
+          <div className="sign-up-form">
+            <SignUpForm
+              handleSubmit={this.handleSubmit}
+              logIn={this.logIn}
+              user={this.state.user}
+            />
+          </div>
         </div>
-
-          </Fragment>
-      </Router>
-    )
+      </Fragment>
+    </Router>
   }
 }
 

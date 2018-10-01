@@ -18,38 +18,57 @@
   z-index: -1;
 }
 
-.App {
-  float: right;
-}
-
-.Topbar {
-  list-style: none;
+.topbar {
+  background-color: #1c7aa7;
+  height: 120px;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: #1c7aa7;
-  height: 80px;
-  z-index: 1;
-  border-bottom: 1px solid #ffffff;
+  overflow: hidden;
+}
+
+.topbar-menu {
   float: right;
+  margin-right: 10px;
 }
 
 .topbar-button {
   text-transform: uppercase;
   text-decoration: none;
-  color: #ffffff;
+  color: #B1E5E5;
   font-weight: bold;
-  float: right;
-  border: 1px solid #ffffff;
-  border-radius: 5px;
-  height: 60px;
-  line-height: 60px;
-  padding: 0 10px;
-  margin: 0 2px;
-}
-
-.logout-button {
   float: left;
+  border: 1px solid #B1E5E5;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  width: 160px;
+  padding-top: 10px;
+  background: #1c7aa7;
 }
 
+.topbar-button-1 {
+  margin-top: 5px;
+  height: 120px;
+  z-index: 3;
+  margin-left: 80px;
+}
+
+.topbar-button-2 {
+  margin-top: -95px;
+  height: 120px;
+  z-index: 2;
+  margin-left: 60px;
+}
+
+.topbar-button-3 {
+  margin-top: -94px;
+  height: 120px;
+  z-index: 1;
+  margin-left: 40px;
+}
+
+.topbar-button:hover {
+  background-color: #B1E5E5;
+  color: #1c7aa7;
+}

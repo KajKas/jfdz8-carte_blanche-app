@@ -33,6 +33,10 @@ class SignUpForm extends Component {
     render() {
         return (
             <div className={`sign-up-form ${this.props.user && 'sign-up-form--hidden'}`}>
+              <span
+              className="title-form-span">
+                nudzi ci się?
+              </span>
                 {!this.props.user &&
                 <form onSubmit={this.handleSubmit}>
                     <label
@@ -41,13 +45,12 @@ class SignUpForm extends Component {
                     >
                         <span
                           className="form-span">
-                          E-mail
+                          E-mail:
                         </span>
                         <input
                             className="form-input"
                             name="e-mail"
                             type="text"
-                            placeholder="e-mail"
                             value={this.props.email}
                             onChange={event => this.setState({
                                 email: event.target.value
@@ -60,13 +63,12 @@ class SignUpForm extends Component {
                     >
                         <span
                         className="form-span">
-                          Hasło
+                          Hasło:
                         </span>
                         <input
                             className="form-input"
                             name="password"
                             type="password"
-                            placeholder="hasło"
                             value={this.props.password}
                             onChange={event => this.setState({
                                 password: event.target.value
