@@ -12,7 +12,7 @@ class App extends Component {
 
   state = {
     events: [],
-    activeCategories: []
+    activeCategories: JSON.parse(localStorage.getItem('activeCategories')) || []
   }
 
   componentDidMount() {
@@ -46,6 +46,7 @@ class App extends Component {
 
   enableCategory = (categoryId) => {
     this.setState({ activeCategories: this.state.activeCategories.concat(categoryId) })
+    // localStorage.setItem('activeCategories', JSON.stringify(this.state.activeCategories))
   }
   filterEvents = () => {
     return this.state.events
@@ -55,8 +56,8 @@ class App extends Component {
     this.setState({
       activeCategories: this.state.activeCategories.filter((actCat => actCat !== ('' + activeCategoryId)))
     })
+    // localStorage.setItem('activeCategories', JSON.stringify(this.state.activeCategories))
   }
-
 
   componentDidUpdate() {
     localStorage.setItem('activeCategories', JSON.stringify(this.state.activeCategories))

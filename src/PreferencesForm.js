@@ -183,7 +183,7 @@ class PreferencesForm extends Component {
         <div>
           <h3>Wybrane kategorie:</h3>
         {
-          this.props.activeCategories.map(
+          this.props.activeCategories.lenght !== 0 && this.props.activeCategories.map(
             activeCategory =>
               <button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>
                 {this.state.categories.filter(categoryTag => categoryTag.id === parseInt(activeCategory))[0].name}
