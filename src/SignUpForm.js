@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
-/*import './SignUpForm.css'*/
+import './SignUpForm.css'
 
 class SignUpForm extends Component {
     componentDidMount() {
@@ -39,7 +39,10 @@ class SignUpForm extends Component {
                         htmlFor="e-mail"
                         className="form-label"
                     >
-                        <span>E-mail</span>
+                        <span
+                          className="form-span">
+                          E-mail
+                        </span>
                         <input
                             className="form-input"
                             name="e-mail"
@@ -55,7 +58,10 @@ class SignUpForm extends Component {
                         htmlFor="password"
                         className="form-label"
                     >
-                        <span>Hasło</span>
+                        <span
+                        className="form-span">
+                          Hasło
+                        </span>
                         <input
                             className="form-input"
                             name="password"
@@ -71,7 +77,7 @@ class SignUpForm extends Component {
                         onClick={this.handleSubmit}
                         className="form-button"
                     >
-                        Stworz konto
+                        Stwórz konto
                     </button>
                     <button
                         onClick={this.logIn}
@@ -81,7 +87,6 @@ class SignUpForm extends Component {
                     </button>
                 </form>}
             </div>
-
         )
     }
 }

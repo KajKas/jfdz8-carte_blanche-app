@@ -10,13 +10,12 @@ import firebase from "firebase";
 
 
 class App extends Component {
-
-  state = {
-    events: [],
-      email: '',
-      password: '',
-      user: null,
-  }
+    state = {
+        events: [],
+        email: '',
+        password: '',
+        user: null,
+    }
 
 
     handleSubmit = event => {
@@ -79,11 +78,6 @@ class App extends Component {
           <div className="hero">
             <div className="App">
               <ul className="Topbar">
-                  <li>
-                      <button onClick={this.signOut}>LOG OUT</button>
-                  </li>
-
-
                 <li>
                   <Link className="topbar-button" to="/preferencesForm">Preferencje</Link>
                 </li>
@@ -95,8 +89,13 @@ class App extends Component {
                 <li>
                   <Link className="topbar-button" to="/eventsList">Lista wydarzeń</Link>
                 </li>
+                <li>
+                  <button
+                    onClick={this.signOut}
+                    className="form-button logout-button"
+                  >Wyloguj się</button>
+                </li>
               </ul>
-
           <Route path="/preferencesForm" component={PreferencesForm}/>
           <Route
             path="/eventsMap"
