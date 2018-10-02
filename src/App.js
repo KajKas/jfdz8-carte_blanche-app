@@ -2,11 +2,13 @@ import React, {Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
-import EventsList from "./EventsList";
-import SignUpForm from "./SignUpForm"
+import EventsList from "./EventsList"
 import SingleEvent from "./SingleEvent";
 import PreferencesForm from "./PreferencesForm";
+import SignUpForm from "./SignUpForm";
+import Home from "./Home";
 import firebase from 'firebase';
+
 
 class App extends Component {
     state = {
@@ -34,6 +36,9 @@ class App extends Component {
         firebase.auth().onAuthStateChanged(
             user => this.setState({user})
         )
+    }
+
+    displayForm(){
     }
 
     getEvents() {
@@ -82,15 +87,38 @@ class App extends Component {
               </div>
             </div>
             <div>
-              {this.state.user && <button
+              {this.state.user !== null ?
+                <button
                 onClick={this.signOut}
                 className="form-button logout-button"
               >
                 Wyloguj się
-              </button>}
+              </button> :
+                <button
+                  onClick={this.displayForm}
+                  className="form-button logout-button"
+                >
+                  Zaloguj się
+                </button>
+              }
+
             </div>
           </div>
-          <Route path="/preferencesForm" component={PreferencesForm}/>
+          <Route
+            exact
+            path='/'
+            render={() => (
+              <Home
+                user={this.state.user}
+                createAccount={this.createAccount}
+                logIn={this.logIn}
+              />
+            )}
+          />
+          <Route
+            path="/preferencesForm"
+            component={PreferencesForm}
+          />
           <Route
             path="/eventsMap"
             render={() => (
@@ -116,10 +144,6 @@ class App extends Component {
               )
             }
           />
-          {!this.state.user && <SignUpForm
-            createAccount={this.createAccount}
-            logIn={this.logIn}
-          />}
         </div>
       </Fragment>
     </Router>
