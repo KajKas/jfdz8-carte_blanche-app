@@ -31,7 +31,7 @@ class EventsMap extends Component {
       <div className='event-map'>
         {
           this.state.currentPosition ?
-            <Map center={this.state.currentPosition} zoom={13} className='event-map__map-element'>
+            <Map center={this.state.currentPosition} zoom={13} className='event-map'>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
