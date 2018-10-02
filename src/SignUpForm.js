@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
-import './SignUpForm.css'
+/*import './SignUpForm.css'*/
 
 class SignUpForm extends Component {
     componentDidMount() {

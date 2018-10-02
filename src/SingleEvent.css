@@ -1,0 +1,51 @@
+.single-event {
+    padding-top: 120px;
+    background-color: #B1E5E5;
+}
+
+.uppercase-blue {
+    text-transform: uppercase;
+    color: #1c7aa7;
+    font-weight: bold;
+}
+
+.inline {
+    display: inline;
+}
+
+
+.single-event-title {
+    padding-bottom: 30px;
+}
+
+.single-event-img {
+    width: 300px;
+}
+
+.single-event-time {
+
+}
+
+.single-event-organiser {
+
+}
+
+.single-event-place {
+
+}
+
+.single-event-ticket_price {
+
+}
+
+.single-event-web {
+
+}
+
+.single-event-description {
+
+}
+
+.single-event-jd {
+
+}

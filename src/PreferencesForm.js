@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react'
+import './PreferencesForm.css'
 
 class PreferencesForm extends Component {
 
@@ -22,12 +23,10 @@ class PreferencesForm extends Component {
       )
   }
 
-
-
   render() {
     return (
       <Fragment>
-        <form>
+        <form className="preferences-form">
           <div>
             <label><input type="checkbox"/>Kino</label>
             <select name="prferences">
