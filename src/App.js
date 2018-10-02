@@ -3,9 +3,9 @@ import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import './App.css';
 import EventsMap from "./EventsMap";
 import EventsList from "./EventsList";
-import SignUpForm from "./SignUpForm"
 import SingleEvent from "./SingleEvent";
 import PreferencesForm from "./PreferencesForm";
+import Home from './Home'
 import firebase from 'firebase';
 
 class App extends Component {
@@ -90,6 +90,18 @@ class App extends Component {
                             </button>}
                         </div>
                     </div>
+
+                    <Route
+                        exact
+                        path='/'
+                        render={() => (
+                            <Home
+                                user={this.state.user}
+                                createAccount={this.createAccount}
+                                logIn={this.logIn}
+                            />
+                        )}
+                    />
                     <Route path="/preferencesForm" component={PreferencesForm}/>
                     <Route
                         path="/eventsMap"
@@ -116,11 +128,6 @@ class App extends Component {
                             )
                         }
                     />
-
-                    {!this.state.user && <SignUpForm
-                        createAccount={this.createAccount}
-                        logIn={this.logIn}
-                    />}
 
                 </div>
             </Fragment>
