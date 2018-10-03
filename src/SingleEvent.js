@@ -50,12 +50,12 @@ class SingleEvent extends Component {
           <section className="single-event">
           <h1 className="single-event-title uppercase-blue">{this.props.event.name}</h1>
           {
-            this.props.event.attachments.map(image => (
+            this.props.event.attachments.map((image) => (
               <img
                 className="single-event-img"
                 src={image.fileName}
                 alt="Zdjęcie wydarzenia"
-              />))
+              />)).shift()
           }
             <div><p className="single-event-time uppercase-blue inline">Rozpoczęcie: </p>
               <p className="inline">{this.formatDate(this.props.event.startDate)}</p>
