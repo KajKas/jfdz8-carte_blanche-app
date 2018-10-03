@@ -18,6 +18,10 @@
   z-index: -1;
 }
 
+.event-map-background {
+  background: none;
+}
+
 .topbar {
   background-color: #1c7aa7;
   height: 120px;

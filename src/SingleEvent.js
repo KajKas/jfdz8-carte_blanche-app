@@ -9,7 +9,7 @@ class SingleEvent extends Component {
     lng: ''
   }
 
-  componentWillMount() {
+  componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
       this.setState({
         lat: position.coords.latitude,
@@ -50,8 +50,12 @@ class SingleEvent extends Component {
           <section className="single-event">
           <h1 className="single-event-title uppercase-blue">{this.props.event.name}</h1>
           {
-            this.props.event.attachments.map(image => (<img className="single-event-img" src={image.fileName}
-                                                            alt="Zdjęcie wydarzenia"/>))
+            this.props.event.attachments.map(image => (
+              <img
+                className="single-event-img"
+                src={image.fileName}
+                alt="Zdjęcie wydarzenia"
+              />))
           }
             <div><p className="single-event-time uppercase-blue inline">Rozpoczęcie: </p>
               <p className="inline">{this.formatDate(this.props.event.startDate)}</p>
@@ -65,14 +69,16 @@ class SingleEvent extends Component {
             <div><p className="single-event-place uppercase-blue inline">Miejsce wydarzenia: </p>
               <p className="inline">{this.props.event.place.name}</p></div>
             <div><p className="single-event-ticket_price uppercase-blue inline">Ceny biletów: </p>
-              <p>
+              <p className="inline">
             {
               this.props.event.tickets.startTicket ?
-              ' ' + this.props.event.tickets.startTicket + 'zł - ' + this.props.event.tickets.endTicket + 'zł' :
-              ' nieznane'
+              ' ' + this.props.event.tickets.startTicket + ' zł - ' + this.props.event.tickets.endTicket + ' zł' :
+              ' brak informacji'
             }
           </p></div>
-          <p className="single-event-web">Strona wydarzenia: <a href={this.props.event.urls.www}>{this.props.event.urls.www}</a></p>
+          <div><p className="single-event-web uppercase-blue inline">
+            Strona wydarzenia: </p> <a href={this.props.event.urls.www}>{this.props.event.urls.www}</a>
+          </div>
           <div className="single-event-description" dangerouslySetInnerHTML={{__html: this.props.event.descLong}} />
           <a className="single-event-jd" href={'https://jakdojade.pl/trojmiasto/trasa/?tc=' + this.props.event.place.address.lat + ':' + this.props.event.place.address.lng + '&fc=' + this.state.lat + ':' + this.state.lng}>
             Jak dojadę?

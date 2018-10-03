@@ -1,6 +1,7 @@
 .single-event {
-    padding-top: 120px;
+    padding: 120px;
     background-color: #B1E5E5;
+    background-image: none;
 }
 
 .uppercase-blue {
@@ -20,6 +21,7 @@
 
 .single-event-img {
     width: 300px;
+    padding-bottom: 30px;
 }
 
 .single-event-time {

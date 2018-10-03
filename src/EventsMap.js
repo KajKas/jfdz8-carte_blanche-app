@@ -28,7 +28,7 @@ class EventsMap extends Component {
 
   render() {
     return (
-      <div className='event-map'>
+      <div className='event-map-background event-map'>
         {
           this.state.currentPosition ?
             <Map center={this.state.currentPosition} zoom={13} className='event-map'>

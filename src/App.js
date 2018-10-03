@@ -123,7 +123,9 @@ class App extends Component {
             path="/eventsMap"
             render={() => (
               <EventsMap
+                style={this.setState.backgroundImage = "none"}
                 events={this.state.events}
+                removeBackgroundImages={true}
               />
             )}
           />
