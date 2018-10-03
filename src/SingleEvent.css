@@ -1,7 +1,6 @@
 .single-event {
     padding: 120px;
     background-color: #B1E5E5;
-    background-image: none;
 }
 
 .uppercase-blue {
@@ -10,10 +9,10 @@
     font-weight: bold;
 }
 
-.inline {
-    display: inline;
+.single-event_inline {
+    display: inline-block;
+    margin-right: 10px;
 }
-
 
 .single-event-title {
     padding-bottom: 30px;
@@ -40,8 +39,10 @@
 
 }
 
-.single-event-web {
-
+.single-event-link {
+    color: #f6b301;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .single-event-description {

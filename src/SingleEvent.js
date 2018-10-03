@@ -57,31 +57,32 @@ class SingleEvent extends Component {
                 alt="Zdjęcie wydarzenia"
               />)).shift()
           }
-            <div><p className="single-event-time uppercase-blue inline">Rozpoczęcie: </p>
-              <p className="inline">{this.formatDate(this.props.event.startDate)}</p>
+            <div><p className="single-event-time uppercase-blue single-event_inline single-event_line-height">
+              Rozpoczęcie: </p>
+              <p className="single-event_inline"> {this.formatDate(this.props.event.startDate)}</p>
             </div>
-            <div><p className="single-event-time uppercase-blue inline">Zakończenie: </p>
-              <p className="inline">{this.formatDate(this.props.event.endDate)}</p>
+            <div><p className="single-event-time uppercase-blue single-event_inline single-event_line-height">Zakończenie: </p>
+              <p className="single-event_inline">{this.formatDate(this.props.event.endDate)}</p>
             </div>
-            <div><p className="single-event-organiser uppercase-blue inline">Organizator: </p>
-              <p className="inline">{this.props.event.organizer.designation}</p>
+            <div><p className="single-event-organiser uppercase-blue single-event_inline">Organizator: </p>
+              <p className="single-event_inline">{this.props.event.organizer.designation}</p>
             </div>
-            <div><p className="single-event-place uppercase-blue inline">Miejsce wydarzenia: </p>
-              <p className="inline">{this.props.event.place.name}</p></div>
-            <div><p className="single-event-ticket_price uppercase-blue inline">Ceny biletów: </p>
-              <p className="inline">
+            <div><p className="single-event-place uppercase-blue single-event_inline">Miejsce wydarzenia: </p>
+              <p className="single-event_inline">{this.props.event.place.name}</p></div>
+            <div><p className="single-event-ticket_price uppercase-blue single-event_inline">Ceny biletów: </p>
+              <p className="single-event_inline">
             {
               this.props.event.tickets.startTicket ?
               ' ' + this.props.event.tickets.startTicket + ' zł - ' + this.props.event.tickets.endTicket + ' zł' :
               ' brak informacji'
             }
           </p></div>
-          <div><p className="single-event-web uppercase-blue inline">
-            Strona wydarzenia: </p> <a href={this.props.event.urls.www}>{this.props.event.urls.www}</a>
+          <div><p className="uppercase-blue single-event_inline">
+            Strona wydarzenia: </p> <a className="single-event-link" href={this.props.event.urls.www}>{this.props.event.urls.www}</a>
           </div>
           <div className="single-event-description" dangerouslySetInnerHTML={{__html: this.props.event.descLong}} />
-          <a className="single-event-jd" href={'https://jakdojade.pl/trojmiasto/trasa/?tc=' + this.props.event.place.address.lat + ':' + this.props.event.place.address.lng + '&fc=' + this.state.lat + ':' + this.state.lng}>
-            Jak dojadę?
+          <a className="single-event-link" href={'https://jakdojade.pl/trojmiasto/trasa/?tc=' + this.props.event.place.address.lat + ':' + this.props.event.place.address.lng + '&fc=' + this.state.lat + ':' + this.state.lng}>
+            JAK DOJADĘ?
           </a>
           </section>
         </Fragment>
