@@ -29,15 +29,17 @@ class PreferencesForm extends Component {
         <form className="preferences-form">
           <div>
             <label><input type="checkbox"/>Kino</label>
-            <select name="prferences">
+            <div className="select-box">
+            <select className="select" name="preferences">
               {
                 this.state.categories.filter(categories => categories.id > 99).filter(categories => categories.id < 200).map(
                   category => (
-                    <option value="text">{category.name}</option>
+                    <option className="option" value="text">{category.name}</option>
                   )
                 )
               }
             </select>
+            </div>
           </div>
           <div>
             <label><input type="checkbox"/>Teatr</label>

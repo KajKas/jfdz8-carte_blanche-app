@@ -5,7 +5,6 @@ import EventsMap from "./EventsMap";
 import EventsList from "./EventsList"
 import SingleEvent from "./SingleEvent";
 import PreferencesForm from "./PreferencesForm";
-import SignUpForm from "./SignUpForm";
 import Home from "./Home";
 import firebase from 'firebase';
 
