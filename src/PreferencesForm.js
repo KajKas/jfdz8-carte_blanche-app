@@ -55,16 +55,16 @@ class PreferencesForm extends Component {
             </select>
           </div>
           <div>
-            <label>Miasto</label>
+            <label className="preferences-label">Miasto</label>
             <select name="preferences">
               <option className="preferences-option" value="text">Gdańsk</option>
               <option className="preferences-option" value="text">Sopot</option>
               <option className="preferences-option" value="text">Gdynia</option>
             </select>
           </div>
-          <div>
-            <label>Kino</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Kino</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 99).filter(categories => categories.id < 200).map(
                   category => (
@@ -74,9 +74,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Teatr</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Teatr</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 199).filter(categories => categories.id < 300).map(
                   category => (
@@ -86,9 +86,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Muzyka</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Muzyka</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 299).filter(categories => categories.id < 400).map(
                   category => (
@@ -98,9 +98,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Sztuka</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Sztuka</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 399).filter(categories => categories.id < 500).map(
                   category => (
@@ -110,9 +110,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Literatura</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Literatura</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 499).filter(categories => categories.id < 600).map(
                   category => (
@@ -122,9 +122,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Rozrywka</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Rozrywka</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 599).filter(categories => categories.id < 700).map(
                   category => (
@@ -134,9 +134,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Rekreacja</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Rekreacja</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 699).filter(categories => categories.id < 800).map(
                   category => (
@@ -146,9 +146,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Nauka</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Nauka</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 899).filter(categories => categories.id < 1000).map(
                   category => (
@@ -158,9 +158,9 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
-            <label>Inne</label>
-            <select name="preferences" onChange={this.handleSelect}>
+          <div className="preferences-item">
+            <label className="preferences-label">Inne</label>
+            <select className="preferences-select" name="preferences" onChange={this.handleSelect}>
               {
                 this.state.categories.filter(categories => categories.id > 999).filter(categories => categories.id < 1100).map(
                   category => (
@@ -170,12 +170,12 @@ class PreferencesForm extends Component {
               }
             </select>
           </div>
-          <div>
+          <div className="preferences-item">
             <label>Cena od:</label>
             <input type="range" min="0" max="1000" onChange={(event) => this.handleRangeFrom(event)}/>
             <span>{this.state.rangeFrom}</span>
           </div>
-          <div>
+          <div className="preferences-item">
             <label>Cena do:</label>
             <input type="range" min={this.state.rangeFrom} max="1000" onChange={(event) => this.handleRangeTo(event)}/>
             <span>{this.state.rangeTo}</span>
@@ -183,26 +183,37 @@ class PreferencesForm extends Component {
         </form>
         <div>
           <h3>Wybrane kategorie:</h3>
-        {
-          this.props.activeCategories.map(
-            activeCategory =>
-              <button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>
-                { this.state.categories ?
-                  setTimeout(function () {
-                    const categ = this.state.categories
-                    debugger
-                    const filcat = categ.filter(categoryTag => categoryTag.id === parseInt(activeCategory))
-                    debugger
-                    const name = filcat[0].name
-                    debugger
-                    console.log(name)
-                    return name
-                  }, 1000) : null
+          {
+            this.props.activeCategories.map(
+              activeCategory =>
+                <button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>
+                  {this.state.categories.filter(categoryTag => categoryTag.id === parseInt(activeCategory))}
+                </button>
+            )
+          }
+        {/*{*/}
+          {/*this.props.activeCategories.map(*/}
+            {/*activeCategory =>*/}
+              {/*<button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>*/}
 
-                }
-              </button>
-          )
-        }
+
+
+                {/*/!*{ this.state.categories ?*!/*/}
+                  {/*/!*setTimeout(function () {*!/*/}
+                    {/*/!*const categ = this.state.categories*!/*/}
+                    {/*/!*debugger*!/*/}
+                    {/*/!*const filcat = categ.filter(categoryTag => categoryTag.id === parseInt(activeCategory))*!/*/}
+                    {/*/!*debugger*!/*/}
+                    {/*/!*const name = filcat[0].name*!/*/}
+                    {/*/!*debugger*!/*/}
+                    {/*/!*console.log(name)*!/*/}
+                    {/*/!*return name*!/*/}
+                  {/*/!*}, 1000) : null*!/*/}
+
+                {/*}*/}
+              {/*</button>*/}
+          {/*)*/}
+        {/*}*/}
         </div>
       </Fragment>
 
