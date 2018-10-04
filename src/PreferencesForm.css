@@ -160,3 +160,12 @@ input[type="checkbox"].preferences-input:checked:after{
     border-radius: 3px;
     cursor: grab;
 }
+
+.chosen-categories {
+    top: 600px;
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
