@@ -162,6 +162,17 @@ class App extends Component {
                     event={this.state.events.find(event => event.id === parseInt(props.match.params.eventId))}/>
                 )}
             />
+            <Route
+              exact
+              path='/'
+              render={() => (
+                <Home
+                  user={this.state.user}
+                  createAccount={this.createAccount}
+                  logIn={this.logIn}
+                />
+              )}
+            />
           </div>
         </Fragment>
       </Router>
