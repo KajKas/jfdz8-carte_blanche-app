@@ -1,0 +1,12 @@
+.events-list {
+    margin-top: 120px;
+    background-color: #569E9E;
+    list-style: none;
+    height: 100vw;
+}
+
+.event-item {
+    border: 1px solid #569E9E;
+    background-color: #B1E5E5;
+    padding: 30px;
+}

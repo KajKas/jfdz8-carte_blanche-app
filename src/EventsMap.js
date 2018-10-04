@@ -2,8 +2,7 @@ import React, {Component} from 'react'
 import {Map, Marker, Popup, TileLayer} from 'react-leaflet'
 import L from 'leaflet';
 import {Link} from "react-router-dom";
-
-/*import './EventMap.css'*/
+import './EventsMap.css'
 
 delete L.Icon.Default.prototype._getIconUrl;
 
@@ -29,10 +28,10 @@ class EventsMap extends Component {
 
   render() {
     return (
-      <div className='event-map'>
+      <div className='event-map-background event-map'>
         {
           this.state.currentPosition ?
-            <Map center={this.state.currentPosition} zoom={13} className='event-map__map-element'>
+            <Map center={this.state.currentPosition} zoom={13} className='event-map'>
               <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
