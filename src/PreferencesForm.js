@@ -43,12 +43,8 @@ class PreferencesForm extends Component {
 
   debug(activeCategory) {
     const categ = this.state.categories
-    debugger
     const filcat = categ.filter(categoryTag => categoryTag.id === parseInt(activeCategory))
-    debugger
     const name = filcat[0].name
-    debugger
-    console.log(name)
     return name
   }
 
@@ -213,7 +209,10 @@ class PreferencesForm extends Component {
 
 
 
-                { this.debug(activeCategory)
+                {
+                  this.state.categories.length ?
+                  this.debug(activeCategory) :
+                    null
 
 
                   // this.state.categories ?
