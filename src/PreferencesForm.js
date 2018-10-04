@@ -41,10 +41,22 @@ class PreferencesForm extends Component {
     })
   }
 
+  debug(activeCategory) {
+    const categ = this.state.categories
+    debugger
+    const filcat = categ.filter(categoryTag => categoryTag.id === parseInt(activeCategory))
+    debugger
+    const name = filcat[0].name
+    debugger
+    console.log(name)
+    return name
+  }
+
 
   render() {
     return (
       <Fragment>
+        <div>
         <form className="preferences-form">
           <div className="preferences-item">
             <label className="preferences-label">Wiek</label>
@@ -54,9 +66,9 @@ class PreferencesForm extends Component {
               <option className="preferences-option" value="text">{'>21'}</option>
             </select>
           </div>
-          <div>
+          <div className="preferences-item">
             <label className="preferences-label">Miasto</label>
-            <select name="preferences">
+            <select className="preferences-select" name="preferences">
               <option className="preferences-option" value="text">Gdańsk</option>
               <option className="preferences-option" value="text">Sopot</option>
               <option className="preferences-option" value="text">Gdynia</option>
@@ -181,39 +193,38 @@ class PreferencesForm extends Component {
             <span>{this.state.rangeTo}</span>
           </div>
         </form>
-        <div>
+        </div>
+        <div className="chosen-categories">
           <h3>Wybrane kategorie:</h3>
-          {
-            this.props.activeCategories.map(
-              activeCategory =>
-                <button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>
-                  {this.state.categories.filter(categoryTag => categoryTag.id === parseInt(activeCategory))}
-                </button>
-            )
-          }
-        {/*{*/}
-          {/*this.props.activeCategories.map(*/}
-            {/*activeCategory =>*/}
-              {/*<button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>*/}
+          {/*{*/}
+            {/*this.props.activeCategories.map(*/}
+              {/*activeCategory =>*/}
+                {/*<button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>*/}
+                  {/*{this.state.categories.filter(categoryTag => categoryTag.id === parseInt(activeCategory))[0].name}*/}
+                {/*</button>*/}
+            {/*)*/}
+          {/*}*/}
+
+
+        {
+          this.props.activeCategories.map(
+            activeCategory =>
+              <button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>
 
 
 
-                {/*/!*{ this.state.categories ?*!/*/}
-                  {/*/!*setTimeout(function () {*!/*/}
-                    {/*/!*const categ = this.state.categories*!/*/}
-                    {/*/!*debugger*!/*/}
-                    {/*/!*const filcat = categ.filter(categoryTag => categoryTag.id === parseInt(activeCategory))*!/*/}
-                    {/*/!*debugger*!/*/}
-                    {/*/!*const name = filcat[0].name*!/*/}
-                    {/*/!*debugger*!/*/}
-                    {/*/!*console.log(name)*!/*/}
-                    {/*/!*return name*!/*/}
-                  {/*/!*}, 1000) : null*!/*/}
+                { this.debug(activeCategory)
 
-                {/*}*/}
-              {/*</button>*/}
-          {/*)*/}
-        {/*}*/}
+
+                  // this.state.categories ?
+                  // setTimeout(function () {
+                  //
+                  // }, 1000) : null
+
+                }
+              </button>
+          )
+        }
         </div>
       </Fragment>
 
