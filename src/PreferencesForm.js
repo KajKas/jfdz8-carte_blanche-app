@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react'
+import './PreferencesForm.css'
 
 class PreferencesForm extends Component {
 
@@ -44,21 +45,21 @@ class PreferencesForm extends Component {
   render() {
     return (
       <Fragment>
-        <form>
-          <div>
-            <label>Wiek</label>
-            <select name="prferences">
-              <option value="text">{'<'}18</option>
-              <option value="text">{'18<21'}</option>
-              <option value="text">{'>21'}</option>
+        <form className="preferences-form">
+          <div className="preferences-item">
+            <label className="preferences-label">Wiek</label>
+            <select className="preferences-select" name="prferences">
+              <option className="preferences-option" value="text">{'<'}18</option>
+              <option className="preferences-option" value="text">{'18<21'}</option>
+              <option className="preferences-option" value="text">{'>21'}</option>
             </select>
           </div>
           <div>
             <label>Miasto</label>
             <select name="preferences">
-              <option value="text">Gdańsk</option>
-              <option value="text">Sopot</option>
-              <option value="text">Gdynia</option>
+              <option className="preferences-option" value="text">Gdańsk</option>
+              <option className="preferences-option" value="text">Sopot</option>
+              <option className="preferences-option" value="text">Gdynia</option>
             </select>
           </div>
           <div>
@@ -67,7 +68,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 99).filter(categories => categories.id < 200).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -79,7 +80,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 199).filter(categories => categories.id < 300).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -91,7 +92,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 299).filter(categories => categories.id < 400).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -103,7 +104,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 399).filter(categories => categories.id < 500).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -115,7 +116,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 499).filter(categories => categories.id < 600).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -127,7 +128,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 599).filter(categories => categories.id < 700).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -139,7 +140,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 699).filter(categories => categories.id < 800).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -151,7 +152,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 899).filter(categories => categories.id < 1000).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }
@@ -163,7 +164,7 @@ class PreferencesForm extends Component {
               {
                 this.state.categories.filter(categories => categories.id > 999).filter(categories => categories.id < 1100).map(
                   category => (
-                    <option value={category.id}>{category.name}</option>
+                    <option className="preferences-option" value={category.id}>{category.name}</option>
                   )
                 )
               }

@@ -1,14 +1,18 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
+import './EventList.css'
 
 class EventsList extends Component {
   render() {
     return (
-      <ul>
+      <ul className="events-list">
         {
           this.props.events.map(
             event => (
-              <li key={event.id}>
+              <li
+                className="event-item"
+                key={event.id}
+              >
                 <Link to={'/events/' + event.id}> {event.name}</Link>
                 <p>{event.descShort}</p>
               </li>

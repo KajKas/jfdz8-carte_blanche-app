@@ -1,50 +1,71 @@
-import React, { Component } from 'react'
-import firebase from 'firebase'
+import React, {Component} from 'react'
+import './SignUpForm.css'
 
 class SignUpForm extends Component {
-    state = {
-        email: '',
-        password: '',
-        user: null
-    }
-
-    componentDidMount() {
-        firebase.auth().onAuthStateChanged(
-            user => this.setState({ user })
-        )
-    }
-
-    handleSubmit = event => {
-        event.preventDefault()
-        firebase.auth().createUserWithEmailAndPassword(
-            this.state.email,
-            this.state.password
-        )
+  state = {
+    email: '',
+    password: '',
     }
 
     render() {
+    const {createAccount, logIn} = this.props
         return (
-            this.state.user ?
-                <p>Hello {this.state.user.email}</p> :
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="e-mail"
-                        value={this.state.email}
-                        onChange={event => this.setState({
-                            email: event.target.value
-                        })}
-                    />
-                    <input
-                        type="password"
-                        placeholder="password"
-                        value={this.state.password}
-                        onChange={event => this.setState({
-                            password: event.target.value
-                        })}
-                    />
-                    <button>Sign up</button>
+          <div className={'sign-up-form'}>
+              <span
+              className="title-form-span">
+                nudzi ci się?
+              </span>
+                <form>
+                    <label
+                        htmlFor="e-mail"
+                        className="form-label"
+                    >
+                        <span
+                          className="form-span">
+                          E-mail:
+                        </span>
+                        <input
+                            className="form-input"
+                            name="e-mail"
+                            type="text"
+                            value={this.state.email}
+                            onChange={event => this.setState({
+                                email: event.target.value
+                            })}
+                        />
+                    </label>
+                    <label
+                        htmlFor="password"
+                        className="form-label"
+                    >
+                        <span
+                        className="form-span">
+                          Hasło:
+                        </span>
+                        <input
+                            className="form-input"
+                            name="password"
+                            type="password"
+                            value={this.state.password}
+                            onChange={event => this.setState({
+                                password: event.target.value
+                            })}
+                        />
+                    </label>
+                    <button
+                        onClick={(e) => createAccount(e, this.state.email, this.state.password)}
+                        className="form-button"
+                    >
+                        Stwórz konto
+                    </button>
+                    <button
+                      onClick={(e) => logIn(e, this.state.email, this.state.password)}
+                        className="form-button"
+                    >
+                        Zaloguj się
+                    </button>
                 </form>
+            </div>
         )
     }
 }

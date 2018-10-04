@@ -1,0 +1,54 @@
+.single-event {
+    padding: 120px;
+    background-color: #B1E5E5;
+}
+
+.uppercase-blue {
+    text-transform: uppercase;
+    color: #1c7aa7;
+    font-weight: bold;
+}
+
+.single-event_inline {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.single-event-title {
+    padding-bottom: 30px;
+}
+
+.single-event-img {
+    width: 300px;
+    padding-bottom: 30px;
+}
+
+.single-event-time {
+
+}
+
+.single-event-organiser {
+
+}
+
+.single-event-place {
+
+}
+
+.single-event-ticket_price {
+
+}
+
+.single-event-link {
+    color: #f6b301;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.single-event-description {
+
+}
+
+.single-event-jd {
+
+}

@@ -1,28 +1,78 @@
-.App {
+.hero {
   text-align: center;
+  height: 100vh;
+  position: relative;
+  background-attachment: fixed;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.hero::after {
+  content: "";
+  background: url("../src/images/background__app.jpg");
+  background-size: cover;
+  opacity: 0.8;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.event-map-background {
+  background: none;
 }
 
-.App-title {
-  font-size: 1.5em;
+.topbar {
+  background-color: #1c7aa7;
+  height: 120px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
 }
 
-.App-intro {
-  font-size: large;
+.topbar-menu {
+  float: right;
+  margin-right: 10px;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.topbar-button {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #B1E5E5;
+  font-weight: bold;
+  float: left;
+  border: 1px solid #B1E5E5;
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+  width: 160px;
+  padding-top: 10px;
+  background: #1c7aa7;
+}
+
+.topbar-button-1 {
+  margin-top: 5px;
+  height: 120px;
+  z-index: 3;
+  margin-left: 80px;
+}
+
+.topbar-button-2 {
+  margin-top: -95px;
+  height: 120px;
+  z-index: 2;
+  margin-left: 60px;
+}
+
+.topbar-button-3 {
+  margin-top: -94px;
+  height: 120px;
+  z-index: 1;
+  margin-left: 40px;
+}
+
+.topbar-button:hover {
+  background-color: #B1E5E5;
+  color: #1c7aa7;
 }

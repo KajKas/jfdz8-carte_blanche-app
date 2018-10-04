@@ -1,0 +1,162 @@
+.preferences-form {
+    margin-top: 120px;
+    padding-top: 30px;
+    width: 800px;
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+.preferences-label {
+    color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    text-shadow: 1px 1px #1c7aa7;
+    text-transform: uppercase;
+}
+
+input[type="checkbox"].preferences-input{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width:70px;
+    height: 8px;
+    background: #f6b301;
+    border-radius: 5px;
+    position: relative;
+    outline: 0;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+input[type="checkbox"].preferences-input:before,
+input[type="checkbox"].preferences-input:after{
+    position: absolute;
+    content: "";
+    -webkit-transition: all .10s;
+    transition: all .10s;
+}
+
+input[type="checkbox"].preferences-input:before{
+    width: 27px;
+    height: 27px;
+    background: #f6b301;
+    border: 4px solid #1c7aa7;
+    border-radius: 50%;
+    top: 50%;
+    left: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+input[type="checkbox"].preferences-input:after{
+    width: 27px;
+    height: 27px;
+    background: #fff;
+    border-radius: 50%;
+    top: 50%;
+    left: 4px;
+    -webkit-transform: scale(1) translateY(-50%);
+    transform: scale(1) translateY(-50%);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+}
+
+input[type="checkbox"].preferences-input:checked:before{
+    left: calc(100% - 35px);
+}
+
+input[type="checkbox"].preferences-input:checked:after{
+    left: 75px;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+
+.preferences-select-box {
+    display: inline-block;
+    height: 50px;
+}
+.preferences-select-box > .preferences-select {
+    margin: -7px 20px 0 20px;
+    vertical-align: top;
+    display: inline;
+}
+
+.preferences-select {
+    overflow: hidden;
+    height: 35px;
+    width: 180px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 16px;
+    padding-left: 5px;
+    background: #ffc52e;
+    border: 1px solid #f6b301;
+    border-radius: 3px;
+    background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.2));
+    background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.2));
+    background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.2));
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.preferences-select:before, .preferences-select:after {
+    content: '';
+    z-index: 2;
+    top: 9px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 4px dashed;
+    border-color: #888888 transparent;
+    pointer-events: none;
+}
+
+.preferences-select:before {
+    border-bottom-style: solid;
+    border-top: none;
+}
+
+.preferences-select:after {
+    margin-top: 7px;
+    border-top-style: solid;
+    border-bottom: none;
+}
+
+.preferences-option {
+    position: relative;
+    width: 130%;
+    margin: 0;
+    padding: 6px 8px 6px 10px;
+    height: 28px;
+    line-height: 14px;
+    font-size: 12px;
+    color: #62717a;
+    text-shadow: 0 1px white;
+    background: rgba(0, 0, 0, 0) !important;
+    border: 0;
+    border-radius: 0;
+    -webkit-appearance: none;
+}
+
+.preferences-option:focus {
+    z-index: 3;
+    width: 100%;
+    color: #394349;
+    outline: 2px solid #49aff2;
+    outline-offset: -2px;
+}
+
+.preferences-option > option {
+    margin: 3px;
+    padding: 6px 8px;
+    text-shadow: none;
+    background: #f2f2f2;
+    border-radius: 3px;
+    cursor: grab;
+}
