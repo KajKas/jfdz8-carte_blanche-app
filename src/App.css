@@ -18,8 +18,8 @@
   z-index: -1;
 }
 
-.event-map-background {
-  background: none;
+.event-list__wrapper {
+  background-color: brown;
 }
 
 .topbar {

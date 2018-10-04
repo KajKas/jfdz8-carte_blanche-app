@@ -29,7 +29,7 @@ input[type="checkbox"].preferences-input{
     position: relative;
     outline: 0;
     cursor: pointer;
-    margin-right: 20px;
+    margin-right: 2px;
 }
 
 input[type="checkbox"].preferences-input:before,
@@ -80,7 +80,7 @@ input[type="checkbox"].preferences-input:checked:after{
     height: 50px;
 }
 .preferences-select-box > .preferences-select {
-    margin: -7px 20px 0 20px;
+    margin: -7px 0 0 20px;
     vertical-align: top;
     display: inline;
 }

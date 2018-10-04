@@ -5,7 +5,7 @@ import './EventList.css'
 class EventsList extends Component {
   render() {
     return (
-      <ul className="events-list">
+      <ul className="events-list event-list__wrapper">
         {
           this.props.events.map(
             event => (
