@@ -6,6 +6,43 @@
 }
 
 .event-item {
-    border: 1px solid #569E9E;
+    border: 1px dashed #f6b301;
     background-color: #B1E5E5;
+    margin-right: 40px;
+    padding: 20px;
+
+}
+
+.event-title {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+    color: #1c7aa7;
+}
+
+.event-description {
+    color: #4f615f;
+    text-align: left;
+}
+
+.description-button {
+    overflow: hidden;
+    height: 25px;
+    line-height: 25px;
+    width: 180px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 8px;
+    font-size: 16px;
+    margin: auto;
+    background: #ffc52e;
+    border: 1px solid #f6b301;
+    border-radius: 4px;
+    background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.2));
+    background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.2));
+    background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.2));
+    background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.2));
+    -webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.1), 0 1px 1px rgba(0, 0, 0, 0.2);
 }
