@@ -30,6 +30,7 @@
   left: 0;
   right: 0;
   overflow: hidden;
+  z-index: 4;
 }
 
 .topbar-menu {
