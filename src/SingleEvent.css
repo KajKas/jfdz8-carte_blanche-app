@@ -23,32 +23,14 @@
     padding-bottom: 30px;
 }
 
-.single-event-time {
-
-}
-
-.single-event-organiser {
-
-}
-
-.single-event-place {
-
-}
-
-.single-event-ticket_price {
-
-}
-
 .single-event-link {
     color: #f6b301;
     font-weight: bold;
     text-decoration: none;
 }
-
 .single-event-description {
-
+    margin-bottom: 20px;
 }
-
 .single-event-jd {
-
+    border-top:3px solid #f6b301;
 }

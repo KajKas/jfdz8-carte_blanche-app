@@ -81,7 +81,7 @@ class SingleEvent extends Component {
             Strona wydarzenia: </p> <a className="single-event-link" href={this.props.event.urls.www}>{this.props.event.urls.www}</a>
           </div>
           <div className="single-event-description" dangerouslySetInnerHTML={{__html: this.props.event.descLong}} />
-          <a className="single-event-link" href={'https://jakdojade.pl/trojmiasto/trasa/?tc=' + this.props.event.place.address.lat + ':' + this.props.event.place.address.lng + '&fc=' + this.state.lat + ':' + this.state.lng}>
+          <a className="single-event-link single-event-jd" href={'https://jakdojade.pl/trojmiasto/trasa/?tc=' + this.props.event.place.address.lat + ':' + this.props.event.place.address.lng + '&fc=' + this.state.lat + ':' + this.state.lng}>
             JAK DOJADĘ?
           </a>
           </section>
