@@ -1,6 +1,18 @@
+.event-map-wrapper {
+    background-color: #B1E5E5;
+    height: 100vh;
+}
+
 .event-map {
-    text-align: justify;
-    padding: 120px;
-    width: 100vh;
-    height: 400px;
+    margin-top: 150px;
+    position: fixed;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    width: 90%;
+    height: 550px;
+    border: 3px solid #f6b301;
+    border-radius: 30px;
 }

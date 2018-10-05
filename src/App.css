@@ -18,8 +18,8 @@
   z-index: -1;
 }
 
-.event-map-background {
-  background: none;
+.event-list__wrapper {
+  background-color: brown;
 }
 
 .topbar {
@@ -30,6 +30,7 @@
   left: 0;
   right: 0;
   overflow: hidden;
+  z-index: 4;
 }
 
 .topbar-menu {
