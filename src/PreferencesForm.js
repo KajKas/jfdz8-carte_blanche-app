@@ -1,29 +1,31 @@
 import React, {Component, Fragment} from 'react'
 import './PreferencesForm.css'
+import myCategories from './categories';
+
 
 class PreferencesForm extends Component {
 
   state = {
-    categories: [],
+    categories: myCategories,
     rangeFrom: 0,
     rangeTo: 0
   }
 
-  componentDidMount() {
-    this.getCategories()
-  }
-
-  getCategories() {
-    fetch(
-      'https://isa-cors-proxy.herokuapp.com/api/rest/categories.json'
-    )
-      .then(response => response.json())
-      .then(
-        data => this.setState({
-          categories: data
-        })
-      )
-  }
+  // componentDidMount() {
+  //   this.getCategories()
+  // }
+  //
+  // getCategories() {
+  //   fetch(
+  //     'https://isa-cors-proxy.herokuapp.com/api/rest/categories.json'
+  //   )
+  //     .then(response => response.json())
+  //     .then(
+  //       data => this.setState({
+  //         categories: data
+  //       })
+  //     )
+  // }
 
   handleSelect = (e) => {
     this.props.enableCategory(e.target.value)
@@ -119,8 +121,9 @@ class PreferencesForm extends Component {
                   className="preferences-select"
                   name="preferences"
                   onChange={this.handleSelect}>{
-                    this.state.categories.filter(categories => categories.id > 299)
-                      .filter(categories => categories.id < 400)
+                    this.state.categories.filter(categories => categories.id === 35 || categories.id > 299 && categories.id < 400)
+                      // .filter(categories => categories.id > 299)
+                      // .filter(categories => categories.id < 400)
                       .map(category => (
                         <option
                           className="preferences-option"
@@ -245,16 +248,16 @@ class PreferencesForm extends Component {
                 </select>
               </div>
               <div className="preferences-price">
-                {/*<div>
+                <div>
                   <label className="preferences-label">Cena od
-                    <span className="preferences-span">{this.state.rangeFrom + ' zł'}</span>
+                    <span className="preferences-span">{" " + this.state.rangeFrom + ' zł'}</span>
                   </label>
                   <input
                     type="range"
                     min="0" max="1000"
                     onChange={(event) => this.handleRangeFrom(event)}
                   />
-                </div>*/}
+                </div>
                 <div className="">
                   <label className="preferences-label">cena do
                     <span className="preferences-span">{" " + this.state.rangeTo + ' zł'}</span>
@@ -268,27 +271,19 @@ class PreferencesForm extends Component {
               </div>
             <div className="preferences-chosen-categories">
               <h3>Wybrane kategorie:</h3>
-          {/*{*/}
-            {/*this.props.activeCategories.map(*/}
-              {/*activeCategory =>*/}
-                {/*<button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>*/}
-                  {/*{this.state.categories.filter(categoryTag => categoryTag.id === parseInt(activeCategory))[0].name}*/}
-                {/*</button>*/}
-            {/*)*/}
-          {/*}*/}
-          {
-                this.props.activeCategories.map(
-                  activeCategory =>
-                    <button
-                      className="preferences-select preference-button"
-                      onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>{
-                      this.state.categories.length ? this.debug(activeCategory) : null
-                  // this.state.categories ?
-                  // setTimeout(function () {
-                  //
-                  // }, 1000) : null
-                      }
-                    </button>
+                {
+                  this.props.activeCategories.map(
+                    activeCategory =>
+                      <button
+                        className="preferences-select preference-button"
+                        onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}
+                      >
+                        {
+                          this.state.categories.length
+                            ? this.debug(activeCategory)
+                            : null
+                        }
+                      </button>
                 )}
              </div>
             </div>
