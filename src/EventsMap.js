@@ -37,27 +37,21 @@ class EventsMap extends Component {
                 attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
               />
               {
-
-
-                this.props.events.filter(activeEvent => activeEvent.categoryId === Number(this.props.activeCategories)).map(
+                this.props.activeCategories.length>=1
+                ? (this.props.events.filter(activeEvent => activeEvent.categoryId === Number(this.props.activeCategories)).map(
                   event => (
                     <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
                       <Popup><Link to={'/events/' + event.id}> {event.name}</Link><br/>{event.descShort}</Popup>
                     </Marker>
                   )
-                )
-
-
-
-                // this.props.events.map(
-                //   event => (
-                //     <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
-                //       <Popup><Link to={'/events/' + event.id}> {event.name}</Link><br/>{event.descShort}</Popup>
-                //     </Marker>
-                //   )
-                // )
-
-
+                ))
+                : (this.props.events.map(
+                  event => (
+                    <Marker key={event.id} position={[Number(event.place.address.lat), Number(event.place.address.lng)]}>
+                      <Popup><Link to={'/events/' + event.id}> {event.name}</Link><br/>{event.descShort}</Popup>
+                    </Marker>
+                  )
+                ))
               }
             </Map> : null
         }
