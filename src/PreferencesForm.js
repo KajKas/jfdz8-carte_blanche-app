@@ -1,29 +1,31 @@
 import React, {Component, Fragment} from 'react'
 import './PreferencesForm.css'
+import myCategories from './categories';
+
 
 class PreferencesForm extends Component {
 
   state = {
-    categories: [],
+    categories: myCategories,
     rangeFrom: 0,
     rangeTo: 0
   }
 
-  componentDidMount() {
-    this.getCategories()
-  }
-
-  getCategories() {
-    fetch(
-      'https://isa-cors-proxy.herokuapp.com/api/rest/categories.json'
-    )
-      .then(response => response.json())
-      .then(
-        data => this.setState({
-          categories: data
-        })
-      )
-  }
+  // componentDidMount() {
+  //   this.getCategories()
+  // }
+  //
+  // getCategories() {
+  //   fetch(
+  //     'https://isa-cors-proxy.herokuapp.com/api/rest/categories.json'
+  //   )
+  //     .then(response => response.json())
+  //     .then(
+  //       data => this.setState({
+  //         categories: data
+  //       })
+  //     )
+  // }
 
   handleSelect = (e) => {
     this.props.enableCategory(e.target.value)
