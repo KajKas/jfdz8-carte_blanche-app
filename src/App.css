@@ -28,17 +28,16 @@
 }
 
 .topbar-menu {
+  display: none;
   margin: 0;
   padding: 0;
   list-style: none;
   overflow: hidden;
   clear: both;
-  max-height: 0;
   transition: max-height .2s ease-out;
 }
 
 .topbar-button {
-  display: block;
   margin: 24px 5px 0 0;
   padding: 5px 5px;
   text-decoration: none;
@@ -55,6 +54,10 @@
   z-index: 10;
 }
 
+.topbar-menu.topbar-menu--show-menu {
+  display: block;
+}
+
 .topbar-button:hover,
 .menu-btn:hover {
   background-color: #B1E5E5;
@@ -64,8 +67,8 @@
 .topbar-logo {
   display: block;
   float: left;
-  padding: 10px 20px;
-  width: 100px;
+  padding: 13px 20px;
+  width: 90px;
   height: auto;
 }
 
@@ -141,6 +144,7 @@
   }
 
   .topbar-menu {
+    display: block;
     clear: none;
     float: right;
     height: 400px;

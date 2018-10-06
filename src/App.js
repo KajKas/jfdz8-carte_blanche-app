@@ -13,8 +13,9 @@ import firebase from 'firebase';
 class App extends Component {
     state = {
         events: [],
-        activeCategories: JSON.parse(localStorage.getItem('activeCategories')) || []
+        activeCategories: JSON.parse(localStorage.getItem('activeCategories')) || [],
         // user: null
+        menuOpened: false
     }
 
     createAccount = (event, email, password) => {
@@ -113,11 +114,11 @@ class App extends Component {
                         </button>
                     }
                 </div>
-                <input className="menu-btn" type="checkbox" id="menu-btn"/>
+                <input className="menu-btn" type="checkbox" id="menu-btn" onClick={() => this.setState({menuOpened: !this.state.menuOpened})}/>
                 <label className="menu-icon" htmlFor="menu-btn">
                     <span className="navicon"></span>
                 </label>
-              <ul className="topbar-menu">
+              <ul className={`topbar-menu ${this.state.menuOpened ? 'topbar-menu--show-menu' : ''}`}>
                 <li>
                   <Link className="topbar-button topbar-button-1" to="/preferencesForm">Twój wybór</Link>
                 </li>
