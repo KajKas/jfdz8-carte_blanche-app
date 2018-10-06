@@ -35,27 +35,25 @@
   overflow: hidden;
   clear: both;
   transition: max-height .2s ease-out;
+  height: auto;
+    margin-top: 80px;
 }
 
 .topbar-button {
-  margin: 24px 5px 0 0;
   padding: 5px 5px;
   text-decoration: none;
   text-transform: uppercase;
   color: #B1E5E5;
   font-weight: bold;
   float: left;
-  border: 1px solid #B1E5E5;
-  border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  width: 125px;
   background: #1c7aa7;
   font-size: 14px;
   z-index: 10;
+    width: 100%;
 }
 
 .topbar-menu.topbar-menu--show-menu {
-  display: block;
+  display: inline-block;
 }
 
 .topbar-button:hover,
@@ -140,7 +138,12 @@
   }
 
   .topbar-button {
-    padding: 20px 30px;
+    padding: 20px 5px;
+      margin: 24px 5px 0 0;
+      border: 1px solid #B1E5E5;
+      border-bottom: none;
+      border-radius: 5px 5px 0 0;
+      width: 125px;
   }
 
   .topbar-menu {
@@ -149,6 +152,7 @@
     float: right;
     height: 400px;
     max-height: none;
+      margin-top: 0;
   }
 
   .menu-icon {
