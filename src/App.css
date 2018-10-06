@@ -29,18 +29,19 @@
 
 .topbar-menu {
   display: none;
-  margin: 0;
+  margin-top: -10px;
   padding: 0;
   list-style: none;
   overflow: hidden;
   clear: both;
   transition: max-height .2s ease-out;
   height: auto;
-    margin-top: 80px;
+  width: 100%;
+
 }
 
 .topbar-button {
-  padding: 5px 5px;
+  padding: 20px 0 10px 0;
   text-decoration: none;
   text-transform: uppercase;
   color: #B1E5E5;
@@ -49,7 +50,8 @@
   background: #1c7aa7;
   font-size: 14px;
   z-index: 10;
-    width: 100%;
+  width: 100%;
+  height: 30px;
 }
 
 .topbar-menu.topbar-menu--show-menu {
@@ -58,23 +60,24 @@
 
 .topbar-button:hover,
 .menu-btn:hover {
-  background-color: #B1E5E5;
+  background-color: #FFD467;
   color: #1c7aa7;
 }
 
 .topbar-logo {
   display: block;
   float: left;
-  padding: 13px 20px;
-  width: 90px;
-  height: auto;
+  margin: 15px 5px;
+  width: auto;
+  height: 50px;
+  border-radius: 5px;
 }
 
 .menu-icon {
   cursor: pointer;
   display: inline-block;
   float: right;
-  padding: 28px 20px;
+  padding: 28px 40px;
   position: relative;
   user-select: none;
 }
@@ -138,12 +141,13 @@
   }
 
   .topbar-button {
-    padding: 20px 5px;
-      margin: 24px 5px 0 0;
-      border: 1px solid #B1E5E5;
-      border-bottom: none;
-      border-radius: 5px 5px 0 0;
-      width: 125px;
+    padding: 20px 6px;
+    margin: 19px 5px 0 0;
+    border: 1px solid #B1E5E5;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    width: 125px;
+    height: 20px;
   }
 
   .topbar-menu {
@@ -152,17 +156,11 @@
     float: right;
     height: 400px;
     max-height: none;
-      margin-top: 0;
+    margin-top: 0;
+    width: auto;
   }
 
   .menu-icon {
     display: none;
-  }
-
-  .logout-button {
-    background: none;
-    float: right;
-    display: inline;
-    border: 1px solid #B1E5E5;
   }
 }

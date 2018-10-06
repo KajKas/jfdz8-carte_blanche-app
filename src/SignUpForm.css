@@ -65,11 +65,16 @@
     cursor: pointer;
 }
 
-
 .logout-button {
     background: none;
     float: left;
     display: inline;
     border: 1px solid #B1E5E5;
+    height: 46px;
+    margin-top: 17px;
 }
 
+.logout-button:hover {
+    background-color: #FFD467;
+    color: #1c7aa7;
+}
