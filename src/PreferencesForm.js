@@ -121,8 +121,9 @@ class PreferencesForm extends Component {
                   className="preferences-select"
                   name="preferences"
                   onChange={this.handleSelect}>{
-                    this.state.categories.filter(categories => categories.id > 299)
-                      .filter(categories => categories.id < 400)
+                    this.state.categories.filter(categories => categories.id === 35 || categories.id > 299 && categories.id < 400)
+                      // .filter(categories => categories.id > 299)
+                      // .filter(categories => categories.id < 400)
                       .map(category => (
                         <option
                           className="preferences-option"
