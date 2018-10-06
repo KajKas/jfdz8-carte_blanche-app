@@ -68,7 +68,13 @@
 .logout-button {
     background: none;
     float: left;
-    margin: 35px 0 0 10px;
+    display: inline;
     border: 1px solid #B1E5E5;
+    height: 46px;
+    margin-top: 17px;
 }
 
+.logout-button:hover {
+    background-color: #FFD467;
+    color: #1c7aa7;
+}
