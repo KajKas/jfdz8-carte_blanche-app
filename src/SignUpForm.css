@@ -76,5 +76,17 @@
 
 .logout-button:hover {
     background-color: #FFD467;
+
+}
+
+.logout-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #B1E5E5;
+    font-size: 13px;
+}
+
+.logout-link:hover {
     color: #1c7aa7;
+
 }
