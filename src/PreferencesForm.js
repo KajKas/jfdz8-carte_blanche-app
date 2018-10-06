@@ -245,16 +245,16 @@ class PreferencesForm extends Component {
                 </select>
               </div>
               <div className="preferences-price">
-                {/*<div>
+                <div>
                   <label className="preferences-label">Cena od
-                    <span className="preferences-span">{this.state.rangeFrom + ' zł'}</span>
+                    <span className="preferences-span">{" " + this.state.rangeFrom + ' zł'}</span>
                   </label>
                   <input
                     type="range"
                     min="0" max="1000"
                     onChange={(event) => this.handleRangeFrom(event)}
                   />
-                </div>*/}
+                </div>
                 <div className="">
                   <label className="preferences-label">cena do
                     <span className="preferences-span">{" " + this.state.rangeTo + ' zł'}</span>
@@ -268,27 +268,19 @@ class PreferencesForm extends Component {
               </div>
             <div className="preferences-chosen-categories">
               <h3>Wybrane kategorie:</h3>
-          {/*{*/}
-            {/*this.props.activeCategories.map(*/}
-              {/*activeCategory =>*/}
-                {/*<button onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>*/}
-                  {/*{this.state.categories.filter(categoryTag => categoryTag.id === parseInt(activeCategory))[0].name}*/}
-                {/*</button>*/}
-            {/*)*/}
-          {/*}*/}
-          {
-                this.props.activeCategories.map(
-                  activeCategory =>
-                    <button
-                      className="preferences-select preference-button"
-                      onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}>{
-                      this.state.categories.length ? this.debug(activeCategory) : null
-                  // this.state.categories ?
-                  // setTimeout(function () {
-                  //
-                  // }, 1000) : null
-                      }
-                    </button>
+                {
+                  this.props.activeCategories.map(
+                    activeCategory =>
+                      <button
+                        className="preferences-select preference-button"
+                        onClick={() => this.props.deleteActiveCategory(parseInt(activeCategory))}
+                      >
+                        {
+                          this.state.categories.length
+                            ? this.debug(activeCategory)
+                            : null
+                        }
+                      </button>
                 )}
              </div>
             </div>
