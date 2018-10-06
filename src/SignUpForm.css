@@ -65,10 +65,11 @@
     cursor: pointer;
 }
 
+
 .logout-button {
     background: none;
     float: left;
-    margin: 35px 0 0 10px;
+    display: inline;
     border: 1px solid #B1E5E5;
 }
 

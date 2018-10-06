@@ -6,6 +6,7 @@ import EventsList from "./EventsList"
 import SingleEvent from "./SingleEvent";
 import PreferencesForm from "./PreferencesForm";
 import Home from "./Home";
+import logo from './images/logo.png';
 import firebase from 'firebase';
 
 
@@ -95,33 +96,39 @@ class App extends Component {
         <Fragment>
           <div className="hero">
             <div className="topbar">
-              <div className="topbar-menu">
+                <img className="topbar-logo" src={logo}/>
                 <div>
+                    {this.state.user !== null ?
+                        <button
+                            onClick={this.signOut}
+                            className="form-button logout-button"
+                        >
+                            Wyloguj się
+                        </button> :
+                        <button
+                            onClick={this.displayForm}
+                            className="form-button logout-button"
+                        >
+                            Zaloguj się
+                        </button>
+                    }
+                </div>
+                <input className="menu-btn" type="checkbox" id="menu-btn"/>
+                <label className="menu-icon" htmlFor="menu-btn">
+                    <span className="navicon"></span>
+                </label>
+              <ul className="topbar-menu">
+                <li>
                   <Link className="topbar-button topbar-button-1" to="/preferencesForm">Twój wybór</Link>
-                </div>
-                <div>
+                </li>
+                <li>
                   <Link className="topbar-button topbar-button-2" to="/eventsMap">Mapa wydarzeń</Link>
-                </div>
-                <div>
+                </li>
+                <li>
                   <Link className="topbar-button topbar-button-3" to="/eventsList">Lista wydarzeń</Link>
-                </div>
-              </div>
-              <div>
-                {this.state.user !== null ?
-                  <button
-                    onClick={this.signOut}
-                    className="form-button logout-button"
-                  >
-                    Wyloguj się
-                  </button> :
-                  <button
-                    onClick={this.displayForm}
-                    className="form-button logout-button"
-                  >
-                    Zaloguj się
-                  </button>
-                }
-              </div>
+                </li>
+              </ul>
+
             </div>
 
             <Route
