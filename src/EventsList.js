@@ -8,7 +8,7 @@ class EventsList extends Component {
       <Fragment>
       <ul className="events-list event-list__wrapper">
         {
-          this.props.events.map(
+          this.props.events.filter(activeEvent => activeEvent.categoryId === Number(this.props.activeCategories)).map(
             event => (
               <li
                 className="event-item"
