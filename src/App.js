@@ -106,11 +106,8 @@ class App extends Component {
                         >
                             Wyloguj się
                         </button> :
-                        <button
-                            onClick={this.displayForm}
-                            className="form-button logout-button"
-                        >
-                            Zaloguj się
+                        <button className="form-button logout-button">
+                             <Link className="logout-link" to="/">Zaloguj się</Link>
                         </button>
                     }
                 </div>
