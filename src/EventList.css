@@ -1,7 +1,7 @@
 .event-list__wrapper {
     background-color: #B1E5E5;
     list-style: none;
-    height: auto;
+    min-height: 100vh;
     padding-top: 100px;
     margin-top: 0;
 }
