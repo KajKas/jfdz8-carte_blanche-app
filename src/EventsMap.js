@@ -15,15 +15,17 @@ L.Icon.Default.mergeOptions({
 class EventsMap extends Component {
 
   state = {
-    position: []
+      currentPosition: [54.347628, 18.6452029],
+      position: []
   }
 
   componentWillMount() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.setState({
-        currentPosition: [position.coords.latitude, position.coords.longitude]
-      })
-    })
+    // navigator.geolocation.getCurrentPosition(position => {
+    //   // console.log(position.coords)
+    //   this.setState({
+    //     currentPosition: [position.coords.latitude, position.coords.longitude]
+    //   })
+    // })
   }
 
   render() {
