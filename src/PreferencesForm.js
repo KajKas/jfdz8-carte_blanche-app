@@ -249,7 +249,7 @@ class PreferencesForm extends Component {
               </div>
               <div className="preferences-price">
                 <div>
-                  <label className="preferences-label">Cena od
+                  <label className="preferences-label">cena od
                     <span className="preferences-span">{" " + this.state.rangeFrom + ' zł'}</span>
                   </label>
                   <input
